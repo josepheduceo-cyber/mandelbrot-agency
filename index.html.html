@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mandelbrot Digital Marketing Agency</title>
+<meta name="description" content="Estrategia, publicidad, contenido y performance digital para marcas que quieren verse mejor, vender más y crecer con una presencia memorable.">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0714; --card:#140b22; --violet:#a855f7; --violet2:#7c3aed; --magenta:#e879f9;
+  --cyan:#22d3ee; --green:#34d399; --yape:#00c9b7; --text:#f5f3ff; --muted:#b3a5d1;
+  --border:rgba(168,85,247,.22); --glow:0 0 30px rgba(168,85,247,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',system-ui,sans-serif;color:var(--text);overflow-x:hidden;
+  background:radial-gradient(1000px 600px at 85% -10%,rgba(124,58,237,.3),transparent 60%),
+             radial-gradient(900px 550px at -10% 45%,rgba(59,40,140,.4),transparent 60%),
+             linear-gradient(160deg,#0d0a1c 0%,#120a24 50%,#1a0f2e 100%);
+}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(168,85,247,.05) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(168,85,247,.05) 1px,transparent 1px);
+  background-size:52px 52px;}
+::selection{background:rgba(168,85,247,.45);color:#fff}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#0b0714}
+::-webkit-scrollbar-thumb{background:linear-gradient(#7c3aed,#a855f7);border-radius:10px}
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+.beams{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.beam{position:absolute;width:75vmax;height:16vmax;top:-8%;left:50%;transform:rotate(-35deg);
+  background:linear-gradient(90deg,transparent,rgba(168,85,247,.2),rgba(34,211,238,.1),transparent);
+  filter:blur(26px);animation:beam 15s ease-in-out infinite alternate}
+.b2{left:8%;top:48%;opacity:.65;animation-delay:-8s}
+.b3{left:30%;top:78%;opacity:.45;animation-delay:-4s}
+@keyframes beam{from{transform:rotate(-35deg) translateX(-7%)}to{transform:rotate(-35deg) translateX(7%)}}
+.orb{position:fixed;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0;animation:deriva 26s ease-in-out infinite alternate}
+.o1{width:430px;height:430px;background:rgba(124,58,237,.5);top:-130px;right:-90px;opacity:.35}
+.o2{width:330px;height:330px;background:rgba(34,211,238,.4);bottom:-110px;left:-70px;opacity:.16;animation-delay:-9s}
+.o3{width:270px;height:270px;background:rgba(232,121,249,.4);top:42%;left:56%;opacity:.14;animation-delay:-17s}
+@keyframes deriva{from{transform:translate(0,0) scale(1)}to{transform:translate(-70px,50px) scale(1.18)}}
+.wrap{width:min(1200px,92%);margin:auto;position:relative;z-index:1}
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;width:min(1200px,94%);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 16px;
+  background:rgba(10,6,19,.78);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;color:var(--text);text-decoration:none}
+.brand img{width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(168,85,247,.7))}
+.nav-links{display:flex;gap:24px}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem;transition:.3s}
+.nav-links a:hover{color:var(--text);text-shadow:0 0 12px rgba(168,85,247,.8)}
+.btn-wa{padding:10px 22px;border-radius:12px;border:1px solid rgba(168,85,247,.5);color:var(--text);
+  text-decoration:none;font-weight:600;background:rgba(168,85,247,.12);transition:.3s}
+.btn-wa:hover{background:rgba(168,85,247,.25);box-shadow:0 0 20px rgba(168,85,247,.4)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:14px;
+  font-weight:700;text-decoration:none;transition:.3s;border:1px solid transparent;cursor:pointer;font-family:inherit;position:relative;overflow:hidden}
+.btn-primary{background:linear-gradient(135deg,var(--violet2),var(--violet));color:#fff;box-shadow:0 8px 30px rgba(124,58,237,.4)}
+.btn-primary::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:.6s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(124,58,237,.55)}
+.btn-primary:hover::after{left:130%}
+.btn-ghost{border-color:var(--border);color:var(--text);background:rgba(168,85,247,.08)}
+.btn-ghost:hover{background:rgba(168,85,247,.16)}
+.hero{min-height:100vh;display:flex;align-items:center;padding:140px 0 90px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-left{text-align:center}
+.hero-left .lead{margin-left:auto;margin-right:auto}
+.hero-cta{justify-content:center}
+.hero-logo{display:flex;justify-content:center;align-items:center;margin:0 auto 26px;perspective:1200px;position:relative}
+.hero-logo::before{content:"";position:absolute;inset:6% 20%;border-radius:50%;
+  background:radial-gradient(circle,rgba(168,85,247,.45),transparent 70%);filter:blur(24px);
+  animation:pulso 4s ease-in-out infinite;z-index:-1}
+@keyframes pulso{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+/* ===== LOGO 3D (volumen por capas) ===== */
+.logo-3d{position:relative;width:min(340px,72%);aspect-ratio:220/190;
+  transform-style:preserve-3d;animation:giro360 12s linear infinite;will-change:transform}
+.logo-3d .layer{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  transform:translateZ(var(--z));pointer-events:none;user-select:none}
+@keyframes giro360{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
+.hero h1{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.06;font-weight:800;text-transform:uppercase;
+  text-shadow:0 0 18px rgba(168,85,247,.7),0 0 60px rgba(124,58,237,.45)}
+.hero .lead{color:var(--muted);margin:22px 0 30px;font-size:1.05rem;max-width:560px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.scroll-down{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:var(--muted);
+  font-size:.7rem;letter-spacing:3px;text-transform:uppercase;display:grid;justify-items:center;gap:8px;text-decoration:none;z-index:1}
+.scroll-down i{width:22px;height:34px;border:2px solid rgba(168,85,247,.5);border-radius:12px;position:relative}
+.scroll-down i::after{content:"";position:absolute;top:6px;left:50%;width:4px;height:7px;margin-left:-2px;border-radius:4px;background:var(--violet);animation:rueda 1.6s ease-in-out infinite}
+@keyframes rueda{0%{transform:translateY(0);opacity:1}70%{transform:translateY(12px);opacity:0}100%{opacity:0}}
+.hero-card{background:linear-gradient(180deg,rgba(26,15,46,.72),rgba(16,9,28,.92));border:1px solid var(--border);
+  border-radius:24px;padding:30px;box-shadow:var(--glow)}
+.badge{display:inline-block;padding:8px 16px;border:1px solid rgba(34,211,238,.4);color:var(--cyan);
+  border-radius:10px;font-weight:700;font-size:.85rem;background:rgba(34,211,238,.08)}
+.orbita{position:relative;width:min(320px,80%);aspect-ratio:1;margin:26px auto}
+.anillo{position:absolute;border:1px solid rgba(168,85,247,.35);border-radius:50%}
+.a1{inset:0}.a2{inset:18%}.a3{inset:34%}
+.nucleo{position:absolute;inset:42%;border-radius:50%;background:radial-gradient(circle,var(--magenta),transparent 70%);filter:blur(3px);animation:pulso 3.5s ease-in-out infinite}
+.dot-wrap{position:absolute;inset:0;animation:orbita linear infinite}
+.w1{animation-duration:9s}
+.w2{animation-duration:14s;inset:18%;animation-delay:-6s}
+.w3{animation-duration:20s;inset:34%;animation-delay:-10s}
+.dot{position:absolute;top:-5px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%}
+.dot.cyan{background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+.dot.green{background:var(--green);box-shadow:0 0 12px var(--green)}
+.dot.pink{background:var(--magenta);box-shadow:0 0 12px var(--magenta)}
+@keyframes orbita{to{transform:rotate(360deg)}}
+.hero-card h2{font-size:1.7rem;font-weight:800}
+.hero-card .desc{color:var(--muted);margin-top:10px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+.stat{background:rgba(168,85,247,.08);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}
+.stat b{display:block;font-size:1.6rem;font-weight:800;color:var(--text)}
+.stat span{color:var(--muted);font-size:.78rem}
+.hero-meta{margin-top:18px;display:grid;gap:6px;font-size:.85rem;color:var(--muted)}
+.hero-meta a{color:var(--cyan);text-decoration:none;font-weight:700}
+section{padding:100px 0;position:relative;z-index:1}
+.kicker-sec{display:inline-flex;align-items:center;gap:10px;color:var(--green);font-size:.78rem;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;margin-bottom:14px}
+.kicker-sec::before{content:"";width:26px;height:2px;background:var(--green);box-shadow:0 0 12px var(--green)}
+.sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:800;text-shadow:0 0 22px rgba(168,85,247,.45)}
+.sec-head p{color:var(--muted);margin-top:8px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+.serv-layout{display:grid;grid-template-columns:1.35fr .75fr;gap:26px;margin-top:30px;align-items:start}
+.serv-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.n1{--neon:#a855f7;--neon-soft:rgba(168,85,247,.35)}
+.n2{--neon:#e879f9;--neon-soft:rgba(232,121,249,.35)}
+.n3{--neon:#22d3ee;--neon-soft:rgba(34,211,238,.35)}
+.n4{--neon:#34d399;--neon-soft:rgba(52,211,153,.35)}
+.n5{--neon:#60a5fa;--neon-soft:rgba(96,165,250,.35)}
+.n6{--neon:#f472b6;--neon-soft:rgba(244,114,182,.35)}
+.serv-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;cursor:pointer;
+  transition:.35s;text-align:left;color:var(--text);font-family:inherit;position:relative;overflow:hidden}
+.serv-card::before{content:"";position:absolute;inset:0;opacity:0;transition:.4s;pointer-events:none;
+  background:radial-gradient(120% 90% at 15% 0%,var(--neon-soft),transparent 62%)}
+.serv-card:hover::before{opacity:1}
+.serv-card:hover{transform:translateY(-4px);border-color:var(--neon);
+  box-shadow:0 0 26px var(--neon-soft),0 10px 30px rgba(0,0,0,.4)}
+.serv-card::after{content:"VER DETALLE →";display:block;margin-top:14px;color:var(--neon);
+  font-size:.7rem;font-weight:800;letter-spacing:2px;opacity:.75;transition:.3s}
+.serv-card:hover::after{opacity:1;text-shadow:0 0 12px var(--neon-soft)}
+.serv-card .serv-num{color:var(--neon);transition:.3s}
+.serv-card:hover .serv-num{text-shadow:0 0 14px var(--neon-soft)}
+.serv-card.active{border-color:var(--neon);box-shadow:0 0 0 1px var(--neon),0 10px 30px var(--neon-soft)}
+.serv-num{font-size:.8rem;font-weight:800;letter-spacing:2px}
+.serv-card h3{margin:10px 0 8px;font-size:1.05rem}
+.serv-card p{color:var(--muted);font-size:.88rem}
+.serv-panel{position:sticky;top:110px;background:linear-gradient(180deg,rgba(26,15,46,.8),rgba(16,9,28,.9));
+  border:1px solid var(--border);border-radius:20px;padding:26px;box-shadow:var(--glow)}
+.serv-panel .kicker{color:var(--cyan);font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.serv-panel h3{font-size:1.4rem;margin:10px 0}
+.serv-panel p{color:var(--muted)}
+.serv-panel .btn{margin-top:20px}
+.modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px;
+  background:rgba(5,3,12,.82);backdrop-filter:blur(8px)}
+.modal.abierto{display:flex;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-card{width:min(980px,100%);max-height:90vh;overflow-y:auto;
+  background:linear-gradient(180deg,#1a0f2e,#120a24);border:1px solid rgba(168,85,247,.35);border-radius:24px;
+  padding:34px;position:relative;box-shadow:0 30px 90px rgba(0,0,0,.6),0 0 60px rgba(124,58,237,.25);animation:subir .35s ease}
+@keyframes subir{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.modal-close{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:12px;border:1px solid var(--border);
+  background:rgba(168,85,247,.12);color:var(--text);font-size:1.05rem;cursor:pointer;transition:.3s;z-index:2}
+.modal-close:hover{background:rgba(168,85,247,.3);transform:rotate(90deg)}
+.modal-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:30px}
+.m-num{color:var(--cyan);font-weight:800;letter-spacing:3px;font-size:.8rem}
+.modal h3{font-size:clamp(1.5rem,3vw,2.1rem);margin:8px 0 4px;text-shadow:0 0 18px rgba(168,85,247,.5)}
+.m-cat{color:var(--muted);font-size:.8rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.m-hook{color:var(--magenta);font-weight:700;font-size:1.05rem;margin-bottom:12px;font-style:italic}
+.m-desc{color:var(--muted);font-size:.95rem}
+.m-sub{margin:18px 0 10px;color:var(--green);font-size:.78rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  display:flex;align-items:center;gap:8px}
+.m-sub::before{content:"";width:18px;height:2px;background:var(--green);box-shadow:0 0 10px var(--green)}
+.m-list{list-style:none;display:grid;gap:8px}
+.m-list li{display:flex;gap:10px;color:var(--muted);font-size:.9rem}
+.m-list li::before{content:"✔";color:var(--green);font-weight:800;text-shadow:0 0 10px rgba(52,211,153,.6)}
+.m-list.res li::before{content:"▲";color:var(--cyan);font-size:.72rem;margin-top:3px;text-shadow:0 0 10px rgba(34,211,238,.7)}
+.m-precio{margin-top:20px;display:inline-block;padding:10px 18px;border-radius:12px;border:1px dashed rgba(52,211,153,.5);
+  color:var(--green);font-weight:800;background:rgba(52,211,153,.08)}
+.m-cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+.m-pago{background:linear-gradient(160deg,#5e1d80,#74228d 60%,#47156a);border:1px solid rgba(0,201,183,.4);
+  border-radius:20px;padding:24px;text-align:center;align-self:start}
+.m-pago h4{color:#fff;font-size:1.05rem;margin-bottom:4px}
+.m-pago .mini{color:#e9d5ff;font-size:.8rem}
+.m-pago .qr-box{width:min(200px,70%);margin:16px auto 8px}
+.m-pago .yape-pill{margin-top:10px;padding:8px 20px;font-size:.85rem}
+.m-pago .btn{width:100%;margin-top:14px}
+.m-pago .yape-num{font-size:.85rem}
+.m-pago .titular{margin-top:10px;color:#e9d5ff;font-size:.75rem;font-style:italic}
+@media(max-width:860px){.modal-grid{grid-template-columns:1fr}}
+.pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+.paso{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;position:relative;overflow:hidden;transition:.3s}
+.paso:hover{transform:translateY(-4px);border-color:rgba(168,85,247,.5)}
+.paso::after{content:attr(data-n);position:absolute;right:14px;top:8px;font-size:2.6rem;font-weight:800;color:rgba(168,85,247,.18)}
+.paso h3{color:var(--violet);font-size:.95rem;text-transform:uppercase;letter-spacing:1px}
+.paso h4{margin:8px 0;font-size:1.1rem}
+.paso p{color:var(--muted);font-size:.88rem}
+.marquee{margin-top:40px;overflow:hidden;border-block:1px solid var(--border);padding:14px 0}
+.marquee-track{display:flex;width:max-content;animation:desfile 22s linear infinite}
+.m-group{display:flex;gap:44px;padding-right:44px}
+.m-group span{color:var(--muted);font-weight:600;letter-spacing:2px;text-transform:uppercase;font-size:.85rem;white-space:nowrap}
+@keyframes desfile{to{transform:translateX(-50%)}}
+/* ===== PRESENCIA PREMIUM: logo 3D + halo eléctrico ===== */
+.premium{margin-top:70px;display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.premium-text p{color:var(--muted);font-size:1.02rem;max-width:520px}
+.premium-card{position:relative;border:1px solid var(--border);border-radius:26px;padding:64px 40px;
+  display:flex;justify-content:center;align-items:center;overflow:hidden;box-shadow:var(--glow);perspective:1200px;
+  background:radial-gradient(60% 60% at 50% 45%,rgba(124,58,237,.25),rgba(10,6,19,.45) 72%),
+             linear-gradient(180deg,rgba(26,15,46,.5),rgba(12,7,22,.85));}
+.premium-card .logo-3d{width:min(400px,85%)}
+.halo{position:absolute;inset:9%;border-radius:50%;opacity:.75;filter:blur(20px);
+  background:conic-gradient(from 0deg,transparent 0 40deg,rgba(168,85,247,.55) 75deg,rgba(34,211,238,.5) 115deg,transparent 160deg 360deg);
+  animation:girarHalo 7s linear infinite}
+@keyframes girarHalo{to{transform:rotate(360deg)}}
+.p-ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:1px solid rgba(168,85,247,.25);border-radius:50%;animation:pulso 5s ease-in-out infinite}
+.r1{width:68%;aspect-ratio:1}
+.r2{width:94%;aspect-ratio:1;animation-delay:-2.5s;border-color:rgba(34,211,238,.18)}
+.tabla-card{margin-top:44px;background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.tabla-head{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:22px 26px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.tabla-head h3{font-size:1.15rem}
+.tabla-head small{display:block;color:var(--muted)}
+.tabla-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:820px}
+th{text-align:left;padding:14px 26px;color:var(--cyan);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;background:rgba(34,211,238,.06)}
+td{padding:13px 26px;border-top:1px solid rgba(168,85,247,.12);color:var(--muted)}
+td:first-child{color:var(--text)}
+tbody tr:not(.cat):hover td{background:rgba(168,85,247,.06)}
+tr.cat td{background:linear-gradient(90deg,rgba(124,58,237,.25),rgba(124,58,237,.05));color:var(--magenta);
+  font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:.78rem}
+td.precio{color:var(--green);font-weight:700;white-space:nowrap}
+.btn-row{padding:9px 16px;border-radius:10px;border:1px solid rgba(34,211,238,.45);background:rgba(34,211,238,.1);
+  color:var(--cyan);font-weight:700;font-size:.72rem;letter-spacing:1px;cursor:pointer;transition:.3s;font-family:inherit;white-space:nowrap}
+.btn-row:hover{background:rgba(34,211,238,.22);box-shadow:0 0 18px rgba(34,211,238,.35);transform:translateY(-2px)}
+.nota{padding:16px 26px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--border)}
+.pagos-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:26px;margin-top:44px;align-items:stretch}
+.yape-card{position:relative;border-radius:24px;padding:34px 28px;text-align:center;overflow:hidden;
+  border:1px solid rgba(0,201,183,.35);
+  background:radial-gradient(120% 90% at 85% -10%,rgba(0,201,183,.22),transparent 55%),
+             linear-gradient(160deg,#5e1d80 0%,#74228d 55%,#47156a 100%);
+  box-shadow:0 20px 60px rgba(116,34,141,.35)}
+.yape-badge{display:inline-flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-style:italic;font-size:1.6rem;letter-spacing:1px}
+.s-badge{width:36px;height:36px;border-radius:50%;background:var(--yape);color:#2c1350;display:grid;place-items:center;
+  font-style:normal;font-weight:800;font-size:.9rem;box-shadow:0 0 18px rgba(0,201,183,.6)}
+.qr-box{background:#f8f7fc;border-radius:18px;padding:14px;width:min(255px,80%);margin:24px auto 8px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.qr-box img{width:100%;display:block;border-radius:10px}
+.yape-pill{display:inline-block;background:var(--yape);color:#fff;font-weight:700;padding:10px 26px;border-radius:999px;margin-top:14px;box-shadow:0 8px 24px rgba(0,201,183,.45)}
+.yape-name{color:#fff;font-weight:700;margin-top:18px;font-size:1.02rem}
+.yape-num{color:#e9d5ff;margin-top:8px;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;font-weight:600}
+.copy-btn{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;
+  padding:4px 12px;font-size:.72rem;cursor:pointer;transition:.3s;font-family:inherit}
+.copy-btn:hover{background:rgba(255,255,255,.28)}
+.btn-yape{background:linear-gradient(135deg,#00c9b7,#00a89a);color:#06322d;box-shadow:0 8px 26px rgba(0,201,183,.4);margin-top:20px}
+.btn-yape:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,201,183,.55)}
+.pay-col{display:grid;gap:20px;align-content:start}
+.pay-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px}
+.pay-card h3{font-size:1.05rem;margin-bottom:14px}
+.pay-row{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-top:1px solid rgba(168,85,247,.12)}
+.pay-row:first-of-type{border-top:none;padding-top:0}
+.pay-ico{min-width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:.72rem}
+.ico-plin{background:rgba(255,106,66,.15);color:#ff6a42;border:1px solid rgba(255,106,66,.4)}
+.ico-bank{background:rgba(34,211,238,.12);color:var(--cyan);border:1px solid rgba(34,211,238,.4)}
+.ico-card{background:rgba(232,121,249,.12);color:var(--magenta);border:1px solid rgba(232,121,249,.4)}
+.pay-row b{display:block;font-size:.95rem}
+.pay-row p{color:var(--muted);font-size:.85rem;margin-top:3px}
+.acc{color:var(--cyan);font-weight:700;letter-spacing:.5px;word-break:break-all}
+.bank-line{margin-top:10px}
+.holder{margin-top:10px;font-size:.8rem;color:var(--muted);font-style:italic}
+.cond-list{list-style:none;display:grid;gap:10px}
+.cond-list li{display:flex;gap:10px;color:var(--muted);font-size:.88rem;align-items:flex-start}
+.cond-list li::before{content:"✔";color:var(--green);font-weight:800;text-shadow:0 0 10px rgba(52,211,153,.6)}
+.yape-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.ystep{background:var(--card);border:1px solid rgba(0,201,183,.25);border-radius:16px;padding:20px;position:relative;overflow:hidden;transition:.3s}
+.ystep:hover{transform:translateY(-4px);border-color:rgba(0,201,183,.5)}
+.ystep::after{content:attr(data-n);position:absolute;right:12px;top:6px;font-size:2.2rem;font-weight:800;color:rgba(0,201,183,.22)}
+.ystep h4{color:var(--yape);font-size:.95rem;margin-bottom:6px}
+.ystep p{color:var(--muted);font-size:.85rem}
+/* ===== CONTACTO: formulario alineado con el mapa ===== */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;margin-top:44px;align-items:stretch}
+.contact-left{display:grid;gap:20px;align-content:start}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:26px;display:grid;gap:18px}
+.info-item h4{color:var(--cyan);font-size:.8rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.info-item p,.info-item a{color:var(--muted);text-decoration:none;font-weight:600}
+.info-item a:hover{color:var(--cyan)}
+.map-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:20px;overflow:hidden}
+.map-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.map-head h4{color:var(--cyan);font-size:.85rem;letter-spacing:2px;text-transform:uppercase}
+.btn-mini{padding:8px 16px;font-size:.75rem;border-radius:10px}
+.map-frame{border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+.map-frame iframe{width:100%;height:280px;display:block;border:0;
+  filter:invert(92%) hue-rotate(190deg) saturate(.75) brightness(.92) contrast(.95)}
+form{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:26px;
+  display:flex;flex-direction:column;gap:16px;height:100%}
+label{font-size:.85rem;color:var(--muted);display:grid;gap:8px}
+input,select,textarea{width:100%;background:rgba(10,6,19,.6);border:1px solid var(--border);border-radius:12px;
+  padding:13px 14px;color:var(--text);font-family:inherit;font-size:.95rem;outline:none;transition:.3s}
+input:focus,select:focus,textarea:focus{border-color:var(--violet);box-shadow:0 0 0 3px rgba(168,85,247,.18)}
+textarea{flex:1;min-height:160px;resize:vertical}
+select option{background:var(--card)}
+footer{padding:34px 0;border-top:1px solid var(--border);color:var(--muted);text-align:center;font-size:.88rem;position:relative;z-index:1;display:grid;gap:6px}
+footer .pay-mini{color:var(--yape);font-weight:600}
+@media(max-width:980px){
+  .hero-grid,.serv-layout,.contact-grid,.premium,.pagos-grid{grid-template-columns:1fr}
+  .pasos{grid-template-columns:1fr 1fr}
+  .serv-panel{position:static}
+  .nav-links{display:none}
+  .scroll-down{display:none}
+  form{height:auto}
+}
+@media(max-width:560px){.serv-grid,.pasos,.stats,.yape-steps{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<canvas id="particles" aria-hidden="true"></canvas>
+<div class="beams" aria-hidden="true"><span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span></div>
+<span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span>
+
+<header class="nav">
+  <a class="brand" href="#"><img data-logo src="assets/logo.png" alt="Logo Mandelbrot">MANDELBROT</a>
+  <nav class="nav-links">
+    <a href="#servicios">Servicios</a><a href="#metodo">Metodo</a>
+    <a href="#portafolio">Portafolio</a><a href="#pagos">Pagos</a><a href="#contacto">Contacto</a>
+  </nav>
+  <a class="btn-wa" href="https://wa.me/51996989580" target="_blank" rel="noopener">WhatsApp</a>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-left">
+      <div class="hero-logo"><div class="logo-3d" id="logo3d" role="img" aria-label="Logo Mandelbrot"></div></div>
+      <h1 class="reveal">Mandelbrot Digital Marketing Agency</h1>
+      <p class="lead reveal">Estrategia, publicidad, contenido y performance digital para marcas que quieren verse mejor, vender más y crecer con una presencia memorable.</p>
+      <div class="hero-cta reveal">
+        <a class="btn btn-primary" href="#contacto">Cotizar proyecto</a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+    <aside class="hero-card reveal">
+      <span class="badge">LED Violet System</span>
+      <div class="orbita">
+        <span class="anillo a1"></span><span class="anillo a2"></span><span class="anillo a3"></span>
+        <span class="nucleo"></span>
+        <span class="dot-wrap w1"><i class="dot cyan"></i></span>
+        <span class="dot-wrap w2"><i class="dot green"></i></span>
+        <span class="dot-wrap w3"><i class="dot pink"></i></span>
+      </div>
+      <h2>Creatividad + datos + pauta</h2>
+      <p class="desc">Campañas pensadas para atraer, convertir y sostener una identidad visual elegante en cada punto de contacto.</p>
+      <div class="stats">
+        <div class="stat"><b class="stat-num" data-target="360">0</b><span>Vision de marca</span></div>
+        <div class="stat"><b class="stat-num" data-target="24">0</b><span>Formatos creativos</span></div>
+        <div class="stat"><b class="stat-num" data-target="9">0</b><span>Horas de atencion</span></div>
+      </div>
+      <div class="hero-meta">
+        <a href="tel:+51996989580">+51996989580</a>
+        <span>URB. LOS LICENCIADOS PSJ LOA H-7 - CUSCO - PERÚ</span>
+        <span>DE LUNES A VIERNES DE 9 A.M A 9 P.M</span>
+      </div>
+    </aside>
+  </div>
+  <a class="scroll-down" href="#servicios"><i></i>Scroll</a>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker-sec">Servicios</span>
+    </div>
+    <div class="serv-layout">
+      <div class="serv-grid">
+        <button type="button" class="serv-card n1 active reveal" data-servicio="publicidad"><span class="serv-num">01</span><h3>Publicidad digital</h3><p>Meta Ads, Google Ads, TikTok Ads y optimización de conversiones.</p></button>
+        <button type="button" class="serv-card n2 reveal" data-servicio="branding"><span class="serv-num">02</span><h3>Branding y diseño</h3><p>Identidad visual, piezas gráficas, manual de marca y dirección creativa.</p></button>
+        <button type="button" class="serv-card n3 reveal" data-servicio="social"><span class="serv-num">03</span><h3>Social media</h3><p>Calendarios, contenido, community management y crecimiento orgánico.</p></button>
+        <button type="button" class="serv-card n4 reveal" data-servicio="web"><span class="serv-num">04</span><h3>Web y conversión</h3><p>Landing pages, embudos, SEO local, analítica y mejora de experiencia.</p></button>
+        <button type="button" class="serv-card n5 reveal" data-servicio="contenido"><span class="serv-num">05</span><h3>Contenido audiovisual</h3><p>Reels, fotografía comercial, guiones, motion graphics y spots.</p></button>
+        <button type="button" class="serv-card n6 reveal" data-servicio="estrategia"><span class="serv-num">06</span><h3>Estrategia comercial</h3><p>Investigación, posicionamiento, promociones, lanzamientos y reportes.</p></button>
+      </div>
+      <aside class="serv-panel reveal">
+        <span class="kicker">Servicio seleccionado</span>
+        <h3 id="panelTitulo">Publicidad digital</h3>
+        <p id="panelDesc">Diseño, ejecución y optimización de campañas pagadas para generar alcance, prospectos y ventas con medición clara.</p>
+        <a class="btn btn-primary" href="#contacto">Solicitar propuesta</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <!-- ✅ Título "Método Mandelbrot" eliminado -->
+    <div class="sec-head reveal">
+      <span class="kicker-sec">Metodo</span>
+      <p>Un sistema visual y comercial que escala sin perder identidad.</p>
+    </div>
+    <div class="pasos">
+      <div class="paso reveal" data-n="01"><h3>Diagnóstico</h3><h4>Analizamos la marca</h4><p>Revisamos oferta, audiencia, canales, competencia y oportunidades de posicionamiento.</p></div>
+      <div class="paso reveal" data-n="02"><h3>Arquitectura</h3><h4>Diseñamos el plan</h4><p>Definimos mensajes, piezas, calendario, presupuesto de pauta e indicadores clave.</p></div>
+      <div class="paso reveal" data-n="03"><h3>Ejecución</h3><h4>Activamos campañas</h4><p>Producimos contenido, lanzamos anuncios, optimizamos embudos y gestionamos comunidad.</p></div>
+      <div class="paso reveal" data-n="04"><h3>Escala</h3><h4>Medimos y mejoramos</h4><p>Entregamos reportes claros para decidir qué potenciar, pausar o transformar.</p></div>
+    </div>
+    <div class="marquee">
+      <div class="marquee-track">
+        <div class="m-group"><span>Branding</span><span>Performance</span><span>Social Ads</span><span>Diseño</span><span>SEO Local</span><span>Contenido</span></div>
+        <div class="m-group"><span>Branding</span><span>Performance</span><span>Social Ads</span><span>Diseño</span><span>SEO Local</span><span>Contenido</span></div>
+      </div>
+    </div>
+    <div class="premium reveal">
+      <div class="premium-text">
+        <!-- ✅ Titular eliminado; se conserva kicker + párrafo -->
+        <span class="kicker-sec">Presencia premium</span>
+        <p>La energía violeta del logo guía la experiencia visual: luces reactivas, textura digital, contraste alto y composiciones pensadas para comunicar confianza.</p>
+      </div>
+      <!-- ✅ Logo con giro 360° + volumen + halo eléctrico -->
+      <div class="premium-card">
+        <span class="halo"></span>
+        <span class="p-ring r1"></span><span class="p-ring r2"></span>
+        <div class="logo-3d" role="img" aria-label="Logo Mandelbrot"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portafolio">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker-sec">Portafolio comercial</span>
+      <p>Servicios listos para activar marca, contenido, pauta y conversión.</p>
+    </div>
+    <div class="tabla-card reveal">
+      <div class="tabla-head">
+        <div><h3>Mandelbrot Digital Marketing Agency</h3><small>Portafolio de servicios</small></div>
+        <a class="btn btn-ghost" href="https://wa.me/51996989580" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+      </div>
+      <div class="tabla-scroll">
+        <table>
+          <thead><tr><th>Servicio</th><th>Tipo</th><th>Formato</th><th>Precio</th><th>Acción</th></tr></thead>
+          <tbody>
+            <tr class="cat"><td colspan="5">Identidad de marca</td></tr>
+            <tr><td>Diseño o actualización de logo</td><td>Diseño</td><td>PNG / JPG</td><td class="precio">S/. 50</td><td><button type="button" class="btn-row" data-item="Diseño o actualización de logo" data-precio="S/. 50" data-servicio="branding">VER DETALLES</button></td></tr>
+            <tr><td>Logo animación 2D</td><td>Video</td><td>2D / MP4</td><td class="precio">S/. 150</td><td><button type="button" class="btn-row" data-item="Logo animación 2D" data-precio="S/. 150" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr><td>Logo animación 3D</td><td>Video</td><td>3D / MP4</td><td class="precio">S/. 350</td><td><button type="button" class="btn-row" data-item="Logo animación 3D" data-precio="S/. 350" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr class="cat"><td colspan="5">Contenido para redes sociales</td></tr>
+            <tr><td>Diseño de flyer animado para redes sociales</td><td>Video</td><td>Animación / MP4</td><td class="precio">S/. 120</td><td><button type="button" class="btn-row" data-item="Diseño de flyer animado para redes sociales" data-precio="S/. 120" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr><td>Diseño de flyer imagen para redes sociales</td><td>Imagen</td><td>JPG / PNG</td><td class="precio">S/. 80</td><td><button type="button" class="btn-row" data-item="Diseño de flyer imagen para redes sociales" data-precio="S/. 80" data-servicio="social">VER DETALLES</button></td></tr>
+            <tr><td>Portada Facebook imagen</td><td>Imagen</td><td>JPG 820 x 312 px</td><td class="precio">S/. 50</td><td><button type="button" class="btn-row" data-item="Portada Facebook imagen" data-precio="S/. 50" data-servicio="social">VER DETALLES</button></td></tr>
+            <tr><td>Portada Facebook video</td><td>Video</td><td>MP4 820 x 312 px</td><td class="precio">S/. 200</td><td><button type="button" class="btn-row" data-item="Portada Facebook video" data-precio="S/. 200" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr><td>Social media, campaña 1 mes en Facebook</td><td>Campaña</td><td>5 post / mes</td><td class="precio">S/. 300</td><td><button type="button" class="btn-row" data-item="Social media, campaña 1 mes en Facebook" data-precio="S/. 300" data-servicio="social">VER DETALLES</button></td></tr>
+            <tr class="cat"><td colspan="5">Producción audiovisual</td></tr>
+            <tr><td>Video publicitario básico</td><td>Video</td><td>MP4 Full HD</td><td class="precio">S/. 400</td><td><button type="button" class="btn-row" data-item="Video publicitario básico" data-precio="S/. 400" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr><td>Video publicitario creativo</td><td>Video</td><td>MP4 4K</td><td class="precio">S/. 800</td><td><button type="button" class="btn-row" data-item="Video publicitario creativo" data-precio="S/. 800" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr><td>Filmación, edición y montaje de video drone 4K</td><td>Video</td><td>MP4 4K / Drone</td><td class="precio">S/. 400</td><td><button type="button" class="btn-row" data-item="Filmación, edición y montaje de video drone 4K" data-precio="S/. 400" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr><td>Sesión de fotografía profesional + retoque</td><td>Fotografía</td><td>JPG alta res.</td><td class="precio">S/. 400</td><td><button type="button" class="btn-row" data-item="Sesión de fotografía profesional + retoque" data-precio="S/. 400" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr class="cat"><td colspan="5">Desarrollo web</td></tr>
+            <tr><td>Página web simple con dominio y hosting 1 año</td><td>Web</td><td>HTML / WordPress</td><td class="precio">S/. 1,500</td><td><button type="button" class="btn-row" data-item="Página web simple con dominio y hosting 1 año" data-precio="S/. 1,500" data-servicio="web">VER DETALLES</button></td></tr>
+            <tr><td>Página web personalizada, 2 idiomas + galería</td><td>Web</td><td>WordPress / React</td><td class="precio">S/. 2,800</td><td><button type="button" class="btn-row" data-item="Página web personalizada, 2 idiomas + galería" data-precio="S/. 2,800" data-servicio="web">VER DETALLES</button></td></tr>
+            <tr class="cat"><td colspan="5">Impresión corporativa</td></tr>
+            <tr><td>Impresión de papelería corporativa, 3 a 4 días</td><td>Impresión</td><td>General</td><td class="precio">S/. 250</td><td><button type="button" class="btn-row" data-item="Impresión de papelería corporativa" data-precio="S/. 250" data-servicio="branding">VER DETALLES</button></td></tr>
+            <tr><td>Diseño e impresión de tarjetas de presentación, 1 millar</td><td>Impresión</td><td>9 x 5 cm</td><td class="precio">S/. 150</td><td><button type="button" class="btn-row" data-item="Diseño e impresión de tarjetas de presentación, 1 millar" data-precio="S/. 150" data-servicio="branding">VER DETALLES</button></td></tr>
+            <tr><td>Diseño e impresión de flyer personalizado, 1 millar</td><td>Impresión</td><td>A6 / 1 millar</td><td class="precio">S/. 250</td><td><button type="button" class="btn-row" data-item="Diseño e impresión de flyer personalizado, 1 millar" data-precio="S/. 250" data-servicio="branding">VER DETALLES</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="nota">Los precios no incluyen IGV ni inversión en anuncios pagados en redes sociales.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pagos">
+  <div class="wrap">
+    <!-- ✅ "Paga fácil, rápido y seguro" eliminado -->
+    <div class="sec-head reveal">
+      <span class="kicker-sec">Medios de pago</span>
+      <p>Yape, Plin, transferencia y más. Elige el método que prefieras.</p>
+    </div>
+    <div class="pagos-grid">
+      <div class="yape-card reveal">
+        <div class="yape-badge"><span class="s-badge">S/</span> yape</div>
+        <div class="qr-box"><img data-qr src="assets/yape-qr.png" alt="QR Yape Mandelbrot"></div>
+        <span class="yape-pill">Paga aquí con Yape</span>
+        <p class="yape-name">Joseph Edu Torreblanca Paz</p>
+        <p class="yape-num">+51 996 989 580 <button class="copy-btn" data-copy="996989580" type="button">Copiar</button></p>
+        <a class="btn btn-yape" target="_blank" rel="noopener"
+           href="https://wa.me/51996989580?text=Hola%20Mandelbrot%2C%20acabo%20de%20pagar%20por%20Yape.%20Adjunto%20mi%20comprobante.">
+           Ya pagué, enviar comprobante</a>
+      </div>
+      <div class="pay-col">
+        <div class="pay-card reveal">
+          <h3>Otros métodos de pago</h3>
+          <div class="pay-row"><span class="pay-ico ico-plin">Plin</span>
+            <div><b>Plin</b><p>Envía tu pago al +51 996 989 580 y manda la captura por WhatsApp.</p></div></div>
+          <div class="pay-row"><span class="pay-ico ico-bank">B/</span>
+            <div>
+              <b>Transferencia bancaria — BCP Soles</b>
+              <p class="bank-line">Cuenta: <span class="acc">28592466439008</span>
+                <button class="copy-btn" data-copy="28592466439008" type="button">Copiar</button></p>
+              <b class="bank-line">CCI interbancario</b>
+              <p class="bank-line">Cuenta: <span class="acc">00228519246643900855</span>
+                <button class="copy-btn" data-copy="00228519246643900855" type="button">Copiar</button></p>
+              <p class="holder">Titular: Joseph Edu Torreblanca Paz</p>
+            </div></div>
+          <div class="pay-row"><span class="pay-ico ico-card">💳</span>
+            <div><b>Tarjeta / otros</b><p>Coordinamos pagos con tarjeta u otros métodos según tu necesidad.</p></div></div>
+        </div>
+        <div class="pay-card reveal">
+          <h3>Condiciones de pago</h3>
+          <ul class="cond-list">
+            <li>50% de adelanto para reservar e iniciar tu proyecto; 50% restante contra entrega.</li>
+            <li>Emitimos boleta o factura por cada pago realizado.</li>
+            <li>Precios en soles (S/.). No incluyen IGV ni inversión en anuncios pagados.</li>
+            <li>La pauta (presupuesto de anuncios) se paga directamente en tus cuentas publicitarias.</li>
+            <li>Tras pagar con Yape, Plin o transferencia, envía tu captura por WhatsApp para confirmarlo al instante.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="yape-steps">
+      <div class="ystep reveal" data-n="1"><h4>Escanea el QR</h4><p>Abre tu app de Yape, toca el ícono QR y escanea el código de esta página.</p></div>
+      <div class="ystep reveal" data-n="2"><h4>Confirma el monto</h4><p>Ingresa el monto acordado en tu cotización y confirma el pago con tu clave.</p></div>
+      <div class="ystep reveal" data-n="3"><h4>Envía tu comprobante</h4><p>Toma una captura y envíala por WhatsApp para confirmar tu pago al instante.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <!-- ✅ Título repetido "Contacto" eliminado -->
+    <div class="sec-head reveal">
+      <span class="kicker-sec">Contacto</span>
+      <p>Hablemos de tu siguiente campaña.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="info-card reveal">
+          <div class="info-item"><h4>Teléfono</h4><a href="tel:+51996989580">+51996989580</a></div>
+          <div class="info-item"><h4>Dirección</h4><p>URB. LOS LICENCIADOS PSJ LOA H-7 - CUSCO - PERÚ</p></div>
+          <div class="info-item"><h4>Horario de atención</h4><p>DE LUNES A VIERNES DE 9 A.M A 9 P.M</p></div>
+        </div>
+        <div class="map-card reveal">
+          <div class="map-head">
+            <h4>📍 TODO MARKET PERU</h4>
+            <a class="btn btn-ghost btn-mini" target="_blank" rel="noopener"
+               href="https://www.google.com/maps/place/TODO+MARKET+PERU/@-13.5262981,-71.9386712,1158m/data=!3m2!1e3!4b1!4m6!3m5!1s0x916dd50c621d93f1:0x488f496bbcfdac64!8m2!3d-13.5262981!4d-71.9386712!16s%2Fg%2F11h2bsy_yq?entry=ttu">
+               Cómo llegar</a>
+          </div>
+          <div class="map-frame">
+            <iframe title="Mapa TODO MARKET PERU - Cusco"
+              src="https://www.google.com/maps?q=TODO+MARKET+PERU+Cusco&output=embed&z=17"
+              loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+      <!-- ✅ Formulario estirado: su borde inferior se alinea con el mapa -->
+      <form id="formWa" class="reveal">
+        <label>Nombre o marca<input id="nombre" type="text" placeholder="Tu nombre o marca" required></label>
+        <label>Servicio de interés
+          <select id="servicio">
+            <option>Publicidad digital</option><option>Branding y diseño</option><option>Social media</option>
+            <option>Web y conversión</option><option>Contenido audiovisual</option><option>Estrategia comercial</option>
+          </select>
+        </label>
+        <label>Mensaje<textarea id="mensaje" placeholder="Cuéntanos sobre tu proyecto"></textarea></label>
+        <button class="btn btn-primary" type="submit">Enviar por WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>Mandelbrot Digital Marketing Agency - Cusco, Perú</span>
+  <span class="pay-mini">Medios de pago: Yape · Plin · Transferencia bancaria BCP</span>
+</footer>
+
+<div class="modal" id="modalServicio" role="dialog" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" id="cerrarModal" type="button" aria-label="Cerrar">✕</button>
+    <div class="modal-grid">
+      <div>
+        <span class="m-num" id="mNum">01</span>
+        <h3 id="mTitulo">Publicidad digital</h3>
+        <p class="m-cat" id="mCat"></p>
+        <p class="m-hook" id="mHook"></p>
+        <p class="m-desc" id="mDesc"></p>
+        <p class="m-sub">Qué incluye</p>
+        <ul class="m-list" id="mIncluye"></ul>
+        <p class="m-sub">Resultados que obtienes</p>
+        <ul class="m-list res" id="mResultados"></ul>
+        <span class="m-precio" id="mPrecio"></span>
+        <div class="m-cta">
+          <a class="btn btn-primary" id="mCotizar" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+        </div>
+      </div>
+      <aside class="m-pago">
+        <h4>💳 Paga tu adelanto por Yape</h4>
+        <p class="mini">Escanea el QR y asegura tu cupo de proyecto hoy mismo.</p>
+        <div class="qr-box"><img data-qr src="assets/yape-qr.png" alt="QR Yape"></div>
+        <span class="yape-pill">Paga aquí con Yape</span>
+        <p class="yape-num">+51 996 989 580 <button class="copy-btn" data-copy="996989580" type="button">Copiar</button></p>
+        <a class="btn btn-yape" id="mPagado" target="_blank" rel="noopener">Ya pagué, enviar comprobante</a>
+        <p class="titular">Titular: Joseph Edu Torreblanca Paz</p>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== LOGOS 3D CON VOLUMEN (hero + presencia premium) ===== */
+document.querySelectorAll('.logo-3d').forEach(cont=>{
+  const CAPAS=14, PROF=18;
+  for(let i=0;i<CAPAS;i++){
+    const t=i/(CAPAS-1);
+    const z=(-PROF/2 + PROF*t).toFixed(2);
+    const img=document.createElement('img');
+    img.alt='';img.className='layer';img.setAttribute('data-logo','');
+    img.style.setProperty('--z',z+'px');
+    img.style.filter='brightness('+(0.5+0.5*t).toFixed(2)+') saturate('+(0.85+0.35*t).toFixed(2)+')';
+    cont.appendChild(img);
+  }
+});
+
+/* ===== LOGO ===== */
+const CANDIDATOS=['assets/logo.png','assets/logo.jpg','assets/logo.jpeg','assets/logo.webp',
+ 'assets/logo.png.png','assets/logo-mandelbrot.png','assets/mandelbrot.png','assets/logo-original.png'];
+const SVG_FALLBACK="data:image/svg+xml;utf8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 190"><defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#5b21b6"/><stop offset=".5" stop-color="#8b5cf6"/><stop offset="1" stop-color="#e879f9"/></linearGradient></defs><circle cx="110" cy="24" r="13" fill="#a855f7"/><path d="M52 170 V78 L110 148 L168 78 V170" fill="none" stroke="url(#g)" stroke-width="24"/><path d="M96 122 L176 46" stroke="url(#g)" stroke-width="16"/><path d="M188 32 L152 44 L176 68 Z" fill="url(#g)"/></svg>');
+document.querySelectorAll('img[data-logo]').forEach(img=>{let i=0;
+ (function probar(){if(i>=CANDIDATOS.length){img.src=SVG_FALLBACK;return;}
+  const t=new Image();t.onload=()=>{img.src=CANDIDATOS[i];};t.onerror=()=>{i++;probar();};t.src=CANDIDATOS[i];})();});
+
+/* ===== QR YAPE ===== */
+const QR_BASES=['yape-qr','yape qr','yape_qr','qr-yape','qr_yape','qr yape','CODIGO QR YAPE',
+ 'codigo qr yape','CODIGO-QR-YAPE','Codigo QR Yape','yape-qr.png','yape','qr','imagen yape','yape-qr (1)'];
+const QR_EXTS=['.png','.jpg','.jpeg','.webp','.PNG','.JPG'];
+const QR_CAND=[];QR_BASES.forEach(b=>QR_EXTS.forEach(e=>QR_CAND.push('assets/'+b+e)));
+const QR_FALLBACK="data:image/svg+xml;utf8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><rect width="300" height="300" fill="#ffffff"/><rect x="25" y="25" width="80" height="80" fill="#5b1d7a"/><rect x="195" y="25" width="80" height="80" fill="#5b1d7a"/><rect x="25" y="195" width="80" height="80" fill="#5b1d7a"/><rect x="130" y="130" width="40" height="40" fill="#00c9b7"/><text x="150" y="250" text-anchor="middle" font-family="Arial" font-size="18" fill="#74228d" font-weight="bold">QR YAPE</text><text x="150" y="275" text-anchor="middle" font-family="Arial" font-size="11" fill="#999999">guarda tu QR como assets/yape-qr.png</text></svg>');
+document.querySelectorAll('img[data-qr]').forEach(img=>{let i=0;
+ (function probar(){if(i>=QR_CAND.length){img.src=QR_FALLBACK;return;}
+  const t=new Image();t.onload=()=>{img.src=QR_CAND[i];};t.onerror=()=>{i++;probar();};t.src=QR_CAND[i];})();});
+
+/* ===== COPIAR ===== */
+document.querySelectorAll('[data-copy]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    navigator.clipboard.writeText(b.dataset.copy).then(()=>{
+      const old=b.textContent;b.textContent='¡Copiado!';setTimeout(()=>b.textContent=old,1600);});});});
+
+/* ===== FICHAS DE VENTA ===== */
+const SERVICIOS={
+ publicidad:{num:'01',titulo:'Publicidad digital',
+  hook:'"Convierte clics en clientes, no en simples me gusta."',
+  desc:'Tu negocio no necesita más likes: necesita ventas. Diseñamos campañas en Meta Ads, Google Ads y TikTok Ads que impactan a tu cliente ideal en el momento exacto en que busca lo que ofreces. Cada sol de tu pauta trabaja las 24 horas con un solo objetivo: generar ingresos medibles para tu marca.',
+  incluye:['Configuración profesional de cuentas, píxel y eventos','Investigación de audiencias y palabras clave de alta intención','Creatividades y textos persuasivos que venden','Pruebas A/B y optimización semanal de campañas','Reporte de resultados claro y sin tecnicismos'],
+  resultados:['Más consultas por WhatsApp desde la primera semana','Costo por cliente controlado y medible','Escalado inteligente: más inversión en lo que funciona'],
+  precio:'Desde S/. 300 / mes (+ pauta)'},
+ branding:{num:'02',titulo:'Branding y diseño',
+  hook:'"Una marca que se ve cara, puede cobrar caro."',
+  desc:'Tu cliente decide en 3 segundos si tu negocio inspira confianza. Con una identidad visual profesional —logo, colores, tipografías y piezas coherentes— dejas de parecer "uno más" y te conviertes en la opción obvia. El buen diseño no es un gasto: es la diferencia entre competir por precio y vender por valor.',
+  incluye:['Diseño o renovación completa de logo','Paleta de color y tipografías con psicología de marca','Manual de marca para mantener coherencia siempre','Plantillas listas para redes, anuncios e impresos','Dirección creativa para toda tu comunicación'],
+  resultados:['Percepción premium: puedes cobrar más por lo mismo','Confianza inmediata en redes y publicidad','Marca memorable que se recuerda y se recomienda'],
+  precio:'Desde S/. 50'},
+ social:{num:'03',titulo:'Social media',
+  hook:'"Convierte tu red social en tu vendedor 24/7."',
+  desc:'Una red social abandonada espanta clientes; una red activa y estratégica los enamora. Nos encargamos de todo: calendario, diseño, textos y publicación, para que tu marca se vea viva, profesional y siempre vendiendo, incluso mientras tú atiendes tu negocio.',
+  incluye:['Calendario de contenido mensual estratégico','Diseño de posts con tu identidad de marca','Copywriting y hashtags que generan alcance','Publicación programada y community management','Reporte de crecimiento y engagement'],
+  resultados:['Perfil que transmite confianza y vende solo','Comunidad que interactúa y pregunta por tus productos','Presencia constante sin que muevas un dedo'],
+  precio:'Campaña 1 mes desde S/. 300'},
+ web:{num:'04',titulo:'Web y conversión',
+  hook:'"Tu negocio abierto y vendiendo mientras duermes."',
+  desc:'El 80% de tus clientes te busca en Google antes de comprarte. Si no apareces con una web profesional, aparecen tus competidores. Creamos páginas rápidas, elegantes y diseñadas para convertir visitas en contactos por WhatsApp, con dominio propio y todo listo para posicionar en buscadores.',
+  incluye:['Diseño moderno alineado a tu marca','Textos persuasivos enfocados en venta','Botones de WhatsApp y contacto en 1 clic','SEO básico, seguridad y optimización de velocidad','Dominio + hosting incluidos el primer año'],
+  resultados:['Credibilidad inmediata, al nivel de las grandes marcas','Consultas automáticas las 24 horas','Un canal propio que no depende de algoritmos'],
+  precio:'Desde S/. 1,500'},
+ contenido:{num:'05',titulo:'Contenido audiovisual',
+  hook:'"Si una imagen vale mil palabras, un video vale mil ventas."',
+  desc:'El contenido audiovisual es lo que más detiene el scroll y lo que más vende en redes. Producimos reels, fotos y videos publicitarios con calidad de cine: iluminación, encuadre, edición y color que hacen que tu producto se vea irresistible.',
+  incluye:['Reels y videos publicitarios listos para anunciar','Sesión de fotografía profesional con retoque','Guion, dirección y puesta en escena','Edición, música y colorización profesional','Opcional: tomas aéreas con drone en 4K'],
+  resultados:['Contenido que detiene el scroll y genera deseo','Más alcance orgánico y veces compartido','Marca percibida como líder de su categoría'],
+  precio:'Desde S/. 120'},
+ estrategia:{num:'06',titulo:'Estrategia comercial',
+  hook:'"Deja de adivinar: juega con mapa y ventaja."',
+  desc:'La mayoría de negocios pierde dinero en publicidad por decidir con corazonadas. Nosotros convertimos datos en decisiones: investigamos tu mercado, afinamos tu oferta y diseñamos el plan de acción para que cada inversión tenga rumbo, meta y retorno.',
+  incluye:['Investigación de mercado y competencia','Posicionamiento y oferta ganadora','Plan de lanzamientos y promociones','Embudos y canales recomendados para tu rubro','KPIs y reporte mensual de avance'],
+  resultados:['Presupuesto invertido con criterio, no con suerte','Ventaja clara frente a tu competencia','Crecimiento sostenido y medible mes a mes'],
+  precio:'Cotización personalizada'}
+};
+
+/* ===== MODAL ===== */
+const modal=document.getElementById('modalServicio');
+function abrirModal(k,extra){const s=SERVICIOS[k];if(!s)return;
+ const item=(extra&&extra.item)?extra.item:s.titulo;
+ const precio=(extra&&extra.precio)?extra.precio:s.precio;
+ document.getElementById('mNum').textContent=s.num;
+ document.getElementById('mTitulo').textContent=item;
+ document.getElementById('mCat').textContent=(extra&&extra.item)?('Categoría: '+s.titulo):'';
+ document.getElementById('mHook').textContent=s.hook;
+ document.getElementById('mDesc').textContent=s.desc;
+ document.getElementById('mIncluye').innerHTML=s.incluye.map(i=>'<li>'+i+'</li>').join('');
+ document.getElementById('mResultados').innerHTML=s.resultados.map(i=>'<li>'+i+'</li>').join('');
+ document.getElementById('mPrecio').textContent='Precio: '+precio;
+ document.getElementById('mCotizar').href='https://wa.me/51996989580?text='+encodeURIComponent('Hola Mandelbrot, quiero cotizar '+item+' ('+precio+').');
+ document.getElementById('mPagado').href='https://wa.me/51996989580?text='+encodeURIComponent('Hola Mandelbrot, acabo de pagar por Yape: '+item+' ('+precio+'). Adjunto mi comprobante.');
+ modal.classList.add('abierto');document.body.style.overflow='hidden';}
+function cerrarModal(){modal.classList.remove('abierto');document.body.style.overflow='';}
+document.getElementById('cerrarModal').addEventListener('click',cerrarModal);
+modal.addEventListener('click',e=>{if(e.target===modal)cerrarModal();});
+addEventListener('keydown',e=>{if(e.key==='Escape')cerrarModal();});
+document.querySelectorAll('.serv-card').forEach(card=>{
+ card.addEventListener('click',()=>{
+  document.querySelectorAll('.serv-card').forEach(c=>c.classList.remove('active'));
+  card.classList.add('active');
+  const s=SERVICIOS[card.dataset.servicio];
+  document.getElementById('panelTitulo').textContent=s.titulo;
+  document.getElementById('panelDesc').textContent=s.desc;
+  abrirModal(card.dataset.servicio);});});
+document.querySelectorAll('.btn-row').forEach(b=>{
+ b.addEventListener('click',()=>{
+  abrirModal(b.dataset.servicio,{item:b.dataset.item,precio:b.dataset.precio});});});
+
+/* ===== PARTÍCULAS ===== */
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
+const COLORS=['#22d3ee','#a855f7','#e879f9','#7c3aed','#34d399'];
+let w,h,parts=[];const mouse={x:null,y:null};
+function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;
+ const n=Math.min(140,Math.floor((w*h)/14000));
+ parts=Array.from({length:n},()=>({x:Math.random()*w,y:Math.random()*h,
+  vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*2+.8,
+  tw:Math.random()*Math.PI*2,c:COLORS[Math.random()*COLORS.length|0]}));}
+addEventListener('resize',resize);resize();
+addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+function linea(x1,y1,x2,y2,d,max,rgb){ctx.strokeStyle='rgba('+rgb+','+((1-d/max)*.35)+')';ctx.lineWidth=1;
+ ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();}
+function tick(t){ctx.clearRect(0,0,w,h);
+ for(const p of parts){p.x+=p.vx;p.y+=p.vy;
+  if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;
+  const tw=.5+.5*Math.sin((t||0)/600+p.tw);
+  ctx.globalAlpha=.35+.6*tw;ctx.shadowBlur=8;ctx.shadowColor=p.c;
+  ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fill();}
+ ctx.shadowBlur=0;ctx.globalAlpha=1;
+ for(let i=0;i<parts.length;i++){
+  for(let j=i+1;j<parts.length;j++){const a=parts[i],b=parts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+   if(d<140)linea(a.x,a.y,b.x,b.y,d,140,'168,85,247');}
+  if(mouse.x!==null){const d=Math.hypot(parts[i].x-mouse.x,parts[i].y-mouse.y);
+   if(d<170)linea(parts[i].x,parts[i].y,mouse.x,mouse.y,d,170,'34,211,238');}}
+ requestAnimationFrame(tick);}
+requestAnimationFrame(tick);
+
+/* ===== CONTADORES / REVELADO / FORM ===== */
+function animarContador(el){const fin=+el.dataset.target,t0=performance.now(),dur=1400;
+ (function paso(t){const p=Math.min((t-t0)/dur,1);
+  el.textContent=Math.round(fin*(1-Math.pow(1-p,3)));
+  if(p<1)requestAnimationFrame(paso);})(t0);}
+const ioStats=new IntersectionObserver(es=>es.forEach(e=>{
+ if(e.isIntersecting){animarContador(e.target);ioStats.unobserve(e.target);}}),{threshold:.6});
+document.querySelectorAll('.stat-num').forEach(el=>ioStats.observe(el));
+const ioReveal=new IntersectionObserver(es=>es.forEach(e=>{
+ if(e.isIntersecting){e.target.classList.add('visible');ioReveal.unobserve(e.target);}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>ioReveal.observe(el));
+document.getElementById('formWa').addEventListener('submit',e=>{
+ e.preventDefault();
+ const n=document.getElementById('nombre').value.trim()||'—';
+ const s=document.getElementById('servicio').value;
+ const m=document.getElementById('mensaje').value.trim();
+ window.open('https://wa.me/51996989580?text='+
+  encodeURIComponent('Hola Mandelbrot, soy '+n+'. Me interesa: '+s+'. '+m),'_blank');});
+</script>
+</body>
+</html>
