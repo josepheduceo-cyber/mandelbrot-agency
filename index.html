@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mandelbrot Digital Marketing Agency</title>
+<title>MANDELBROT DIGITAL MARKETING AGENCY | Agencia de Publicidad y Marketing Digital</title>
 <meta name="description" content="Estrategia, publicidad, contenido y performance digital para marcas que quieren verse mejor, vender más y crecer con una presencia memorable.">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -213,6 +213,17 @@ section{padding:100px 0;position:relative;z-index:1}
 .at-orb i{position:absolute;top:-6px;left:50%;margin-left:-6px;width:12px;height:12px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}
 .at-orb i.m{background:var(--magenta);box-shadow:0 0 14px var(--magenta)}
 @keyframes atGira{to{transform:rotate(360deg)}}
+.at-char{display:none;position:absolute;inset:0;place-items:center;filter:drop-shadow(0 0 16px rgba(168,85,247,.5));animation:charFlota 5s ease-in-out infinite}
+.at-char::before{content:"";position:absolute;left:12%;right:12%;top:8%;bottom:8%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(168,85,247,.38),transparent 68%);filter:blur(12px)}
+.at-char::after{content:"";position:absolute;left:24%;right:24%;bottom:-6px;height:14px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(0,0,0,.55),transparent 70%);filter:blur(4px)}
+/* video: se recorta el centro del cuadro (--char-fit: cover) para eliminar las franjas negras de arriba y abajo */
+.at-char>video{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;object-position:50% 50%;background:transparent;filter:url(#chromaVerde);pointer-events:none;clip-path:inset(7% 0 4% 0)}
+.at-char>img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;background:transparent;filter:url(#chromaVerde);pointer-events:none}
+@keyframes charFlota{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@media(prefers-reduced-motion:reduce){.at-char{animation:none}}
+.at-globe.has-char{width:min(500px,100%);height:auto;aspect-ratio:1.95/1;margin-bottom:28px}
+.at-globe.has-char .at-ring,.at-globe.has-char .at-orb,.at-globe.has-char .at-core{display:none}
+.at-globe.has-char .at-char{display:grid}
 .at-chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px}
 .at-chips span{padding:6px 14px;border-radius:999px;border:1px solid var(--border);background:rgba(168,85,247,.1);font-size:.78rem;font-weight:600}
 .at-side{display:grid;gap:16px;grid-template-rows:1fr 1fr auto}
@@ -392,18 +403,119 @@ footer .pay-mini{color:var(--yape);font-weight:600}
 }
 @media(max-width:560px){.serv-grid,.pasos,.stats,.yape-steps{grid-template-columns:1fr}}
 @media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* ===== AUTOR · FAQ · EXTRAS ===== */
+.autor-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;margin-top:36px}
+.autor-fotos{position:relative;padding-bottom:56px}
+.foto{position:relative;margin:0;border-radius:22px;overflow:hidden;border:1px solid var(--border);background:linear-gradient(135deg,#1a0f2e,#2a1650);box-shadow:var(--glow);transition:transform .5s,box-shadow .5s}
+.foto img{display:block;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s,transform .8s}
+.foto.ok img{opacity:1}
+.foto:hover img{transform:scale(1.06)}
+.foto-a{aspect-ratio:16/11}
+.foto-a::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent 55%,rgba(11,7,20,.6))}
+.foto-b{position:absolute;right:-8px;bottom:0;width:46%;aspect-ratio:4/3;border:3px solid #0b0714;outline:1px solid var(--violet);z-index:2}
+.foto-b:hover,.foto-a:hover{box-shadow:0 0 44px rgba(168,85,247,.55)}
+.foto.sin-img::after{content:"JT";position:absolute;inset:0;display:grid;place-items:center;font-size:3rem;font-weight:800;color:var(--violet);text-shadow:var(--glow)}
+.autor-sello{position:absolute;left:16px;bottom:72px;z-index:3;padding:10px 14px;border-radius:14px;background:rgba(10,6,19,.78);backdrop-filter:blur(10px);border:1px solid var(--border);display:grid;gap:2px}
+.autor-sello b{font-size:.9rem}.autor-sello span{color:var(--muted);font-size:.72rem}
+.autor-info h3{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin:14px 0 4px;text-shadow:0 0 22px rgba(168,85,247,.45)}
+.autor-info .rol{color:var(--green)!important;font-weight:600;font-size:.9rem}
+.autor-info p{color:var(--muted);margin-bottom:12px}
+.autor-pilares{list-style:none;display:grid;gap:10px;margin:18px 0}
+.autor-pilares li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--border);border-radius:14px;background:rgba(168,85,247,.07)}
+.autor-pilares i{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--violet2),var(--violet));font-style:normal;font-weight:800;font-size:.8rem}
+.autor-pilares b{display:block;font-size:.92rem}.autor-pilares span{color:var(--muted);font-size:.82rem}
+.autor-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.autor-chips span{padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:rgba(168,85,247,.1);font-size:.74rem;font-weight:600}
+.faq-list{display:grid;gap:12px;margin-top:30px;max-width:860px}
+.faq-item{border:1px solid var(--border);border-radius:16px;background:var(--card);overflow:hidden;transition:.3s}
+.faq-item[open]{border-color:rgba(168,85,247,.55);box-shadow:var(--glow)}
+.faq-item summary{cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;display:flex;justify-content:space-between;gap:16px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:var(--cyan);font-size:1.4rem;line-height:1;transition:transform .3s}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item p{padding:0 22px 18px;color:var(--muted);font-size:.92rem}
+.nav-links a.act{color:var(--text);text-shadow:0 0 12px rgba(168,85,247,.8)}
+.progreso{position:fixed;top:0;left:0;height:3px;width:0;z-index:200;background:linear-gradient(90deg,var(--violet2),var(--magenta),var(--cyan));box-shadow:0 0 12px var(--violet)}
+.fab{position:fixed;right:18px;z-index:90;display:grid;place-items:center;border-radius:50%;text-decoration:none;color:#fff;cursor:pointer;font-family:inherit}
+.fab-wa{bottom:18px;width:54px;height:54px;font-size:1.5rem;background:#25d366;border:0;box-shadow:0 8px 24px rgba(37,211,102,.45);transition:transform .3s}
+.fab-wa:hover{transform:scale(1.1)}
+.fab-top{bottom:84px;width:44px;height:44px;background:rgba(20,11,34,.92);border:1px solid var(--border);opacity:0;pointer-events:none;transition:.3s}
+.fab-top.show{opacity:1;pointer-events:auto}
+.foot-links a{color:var(--cyan);text-decoration:none;font-weight:600}
+@media(max-width:860px){.autor-grid{grid-template-columns:1fr;gap:30px}.foto-b{right:0}}
+
+/* ===== Marca / legal 2026 ===== */
+.brand-txt{display:grid;line-height:1.05}
+.brand-txt b{font-size:1rem;letter-spacing:1px}
+.brand-txt small{font-size:.58rem;font-weight:700;letter-spacing:2.2px;color:var(--magenta)}
+.logo-vars{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:18px;align-items:stretch;margin-bottom:6px}
+.lv-main{margin:0;border:1px solid var(--border);border-radius:22px;background:radial-gradient(circle at 50% 30%,rgba(168,85,247,.22),rgba(20,11,34,.95) 70%);box-shadow:var(--glow);padding:18px;display:grid;gap:10px;place-items:center;text-align:center}
+.lv-main img{width:100%;max-width:240px;height:auto;display:block;transition:opacity .25s}
+.lv-main figcaption{font-size:.74rem;color:var(--muted);letter-spacing:.4px}
+.lv-tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.lv-tile{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:6px;text-align:center;border:1px solid var(--border);border-radius:16px;padding:8px;background:rgba(168,85,247,.05);transition:.2s}
+.lv-tile:hover,.lv-tile:focus-visible{border-color:var(--violet);transform:translateY(-2px)}
+.lv-tile.on{border-color:var(--green);box-shadow:0 0 0 1px var(--green) inset}
+.lv-tile small{font-size:.72rem;color:var(--muted);font-weight:700;letter-spacing:.5px}
+.lv-bg{display:grid;place-items:center;border-radius:12px;height:120px;overflow:hidden}
+.lv-bg.dark{background:#0b0714}
+.lv-bg.light{background:#f5f3ff}
+.lv-bg img{max-width:88%;max-height:104px;object-fit:contain}
+@media(max-width:700px){.logo-vars{grid-template-columns:1fr}}
+.m-flecha{display:inline-grid;place-items:center;width:78px;height:78px;border-radius:20px;border:1px solid var(--border);background:rgba(168,85,247,.1);box-shadow:var(--glow)}
+.nos-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:34px;align-items:start}
+.nos-txt p{color:var(--muted);margin-top:14px;line-height:1.75}
+.nos-txt p b{color:var(--text)}
+.nos-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:26px;display:grid;gap:14px}
+.nos-card h3{font-size:1.1rem}
+.nos-card dl{display:grid;gap:10px;font-size:.88rem}
+.nos-card dt{color:var(--green);font-weight:700;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase}
+.nos-card dd{margin:0;color:var(--muted)}
+.nos-card .nota{font-size:.82rem;color:var(--muted);border-top:1px solid var(--border);padding-top:12px}
+.nos-pilares{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.nos-pilares div{border:1px solid var(--border);border-radius:16px;padding:16px;background:rgba(168,85,247,.06)}
+.nos-pilares b{display:block;margin-bottom:4px}
+.nos-pilares span{font-size:.85rem;color:var(--muted)}
+.chk{display:flex!important;grid-template-columns:none!important;align-items:flex-start;gap:10px!important;font-size:.8rem;line-height:1.5}
+.chk input{margin-top:3px;flex:none;width:auto}
+.chk a,.foot-legal a{color:var(--cyan);font-weight:600;text-decoration:none;cursor:pointer}
+.foot-legal{font-size:.8rem;max-width:900px;margin:0 auto;line-height:1.6}
+.foot-legal b{color:var(--text)}
+.legal-links{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center}
+.legal-links a{color:var(--cyan);font-weight:600;text-decoration:none;cursor:pointer}
+.legal-links a:hover{text-shadow:0 0 12px rgba(34,211,238,.7)}
+.lg-body{display:grid;gap:10px;color:var(--muted);font-size:.9rem;line-height:1.7;max-height:70vh;overflow:auto;padding-right:6px}
+.lg-body h3{color:var(--text);font-size:1.25rem}
+.lg-body h4{color:var(--text);margin-top:8px}
+.lg-body form{padding:18px;margin-top:6px}
+.lg-body input,.lg-body select,.lg-body textarea{width:100%}
+@media(max-width:860px){.nos-grid,.nos-pilares{grid-template-columns:1fr}}
+.hero-legal{margin:-6px 0 22px;font-size:.78rem;color:var(--muted);line-height:1.6;max-width:560px}
+.hero-legal b{color:var(--text)}
+.fact-card{margin-top:26px;border:1px solid var(--border);border-radius:18px;background:rgba(168,85,247,.07);padding:20px 24px;display:grid;gap:6px;font-size:.88rem;color:var(--muted)}
+.fact-card h4{color:var(--text);font-size:1rem}
+.fact-card b{color:var(--text)}
+.m-pago .fact{margin-top:8px;color:#e9d5ff;font-size:.7rem;line-height:1.5}
 </style>
+<meta name="theme-color" content="#0b0714">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_PE">
+<meta property="og:title" content="Mandelbrot Digital Marketing Agency">
+<meta property="og:description" content="Estrategia, publicidad, contenido y performance digital para marcas que quieren verse mejor y vender más. Cusco, Perú · atención virtual.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"MANDELBROT DIGITAL MARKETING AGENCY","legalName":"NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L.","taxID":"20615595617","description":"Agencia de marketing digital: branding, contenido, web, SEO y chatbots.","telephone":"+51996989580","areaServed":"PE","address":{"@type":"PostalAddress","streetAddress":"Urb. Los Licenciados, Pasaje LOA H-7, San Sebastián","addressLocality":"Cusco","addressRegion":"Cusco","addressCountry":"PE"},"founder":{"@type":"Person","name":"Joseph Edu Torreblanca Paz","jobTitle":"Fundador y Gerente General"}}</script>
 </head>
 <body>
 
+<div class="progreso" id="progreso" aria-hidden="true"></div>
 <canvas id="particles" aria-hidden="true"></canvas>
 <div class="beams" aria-hidden="true"><span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span></div>
 <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span>
 
 <header class="nav">
-  <a class="brand" href="#"><img data-logo src="assets/logo.png" alt="Logo Mandelbrot">MANDELBROT</a>
+  <a class="brand" href="#"><img data-logo src="assets/logo.png" alt="Logo MANDELBROT DIGITAL MARKETING AGENCY"><span class="brand-txt"><b>MANDELBROT</b><small>DIGITAL MARKETING AGENCY</small></span></a>
   <nav class="nav-links">
-    <a href="#atencion">Atención</a><a href="#servicios">Servicios</a><a href="#metodo">Metodo</a><a href="#marcas">Marcas</a>
+    <a href="#nosotros">Nosotros</a><a href="#atencion">Atención</a><a href="#servicios">Servicios</a><a href="#metodo">Metodo</a><a href="#autor">Autor</a><a href="#marcas">Marcas</a>
     <a href="#portafolio">Portafolio</a><a href="#pagos">Pagos</a><a href="#contacto">Contacto</a>
   </nav>
   <a class="btn-wa" href="https://wa.me/51996989580" target="_blank" rel="noopener">WhatsApp</a>
@@ -417,6 +529,7 @@ footer .pay-mini{color:var(--yape);font-weight:600}
       <h1 class="reveal">Mandelbrot Digital Marketing Agency</h1>
       <p class="lead reveal">Estrategia, publicidad, contenido y performance digital para marcas que quieren verse mejor, vender más y crecer con una presencia memorable.</p>
       <div class="reveal hero-pill-wrap"><span class="pill-online"><i></i>Negocio online y virtual · Google Meet y Zoom</span></div>
+      <p class="hero-legal reveal"><b>MANDELBROT DIGITAL MARKETING AGENCY</b> es una marca comercial operada por <b>NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L.</b> · RUC 20615595617</p>
       <div class="hero-cta reveal">
         <a class="btn btn-primary" href="#contacto">Cotizar proyecto</a>
         <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
@@ -449,6 +562,50 @@ footer .pay-mini{color:var(--yape);font-weight:600}
   <a class="scroll-down" href="#servicios"><i></i>Scroll</a>
 </section>
 
+<section id="nosotros">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker-sec">Quiénes somos</span>
+      <h2>MANDELBROT DIGITAL MARKETING AGENCY</h2>
+      <p>Innovación, tecnología y crecimiento medible para tu marca.</p>
+    </div>
+    <div class="nos-grid">
+      <div class="nos-txt reveal">
+        <div class="logo-vars" aria-label="Variaciones del logo MANDELBROT DIGITAL MARKETING AGENCY">
+          <figure class="lv-main">
+            <img id="lvMain" data-var="assets/variaciones.logo/principal_negativo_color_1024px" alt="Logo principal MANDELBROT DIGITAL MARKETING AGENCY">
+            <figcaption id="lvCap">Logo principal · versión a color</figcaption>
+          </figure>
+          <div class="lv-tiles">
+            <button type="button" class="lv-tile on" data-cap="Logo principal · versión a color" data-base="assets/variaciones.logo/principal_negativo_color_1024px"><span class="lv-bg dark"><img data-var="assets/variaciones.logo/principal_negativo_color_512px" alt=""></span><small>Principal</small></button>
+            <button type="button" class="lv-tile" data-cap="Versión horizontal · para cabeceras y documentos" data-base="assets/variaciones.logo/horizontal_negativo_color_1024px"><span class="lv-bg dark"><img data-var="assets/variaciones.logo/horizontal_negativo_color_512px" alt=""></span><small>Horizontal</small></button>
+            <button type="button" class="lv-tile" data-cap="Versión monocromo blanco · sobre fondos oscuros o fotos" data-base="assets/variaciones.logo/principal_mono_blanco_1024px"><span class="lv-bg dark"><img data-var="assets/variaciones.logo/principal_mono_blanco_512px" alt=""></span><small>Mono blanco</small></button>
+            <button type="button" class="lv-tile" data-cap="Versión positiva · para fondos claros e impresión" data-base="assets/variaciones.logo/principal_positivo_color_1024px"><span class="lv-bg light"><img data-var="assets/variaciones.logo/principal_positivo_color_512px" alt=""></span><small>Fondo claro</small></button>
+          </div>
+        </div>
+        <p><b>MANDELBROT DIGITAL MARKETING AGENCY</b> es una agencia de publicidad y marketing digital que combina estrategia, creatividad y tecnología para que las marcas se vean mejor, vendan más y crezcan con constancia. Nuestro nombre rinde homenaje al conjunto de Mandelbrot: un patrón que se repite y se expande sin límite, igual que una marca bien construida.</p>
+        <p>Nuestra <b>“M” con flecha hacia arriba</b> resume esa idea: cada proyecto está pensado para trazar una ruta ascendente. Trabajamos con una mirada orientada a resultados, datos claros y soluciones innovadoras en branding, contenido, publicidad digital, desarrollo web, SEO y chatbots.</p>
+        <div class="nos-pilares">
+          <div><b>Innovación</b><span>Ideas y herramientas actuales aplicadas a tu negocio.</span></div>
+          <div><b>Crecimiento</b><span>Estrategias con objetivos y métricas definidas.</span></div>
+          <div><b>Resultados</b><span>Cada pieza creativa responde a una meta comercial.</span></div>
+        </div>
+      </div>
+      <aside class="nos-card reveal">
+        <h3>Información Corporativa</h3>
+        <dl>
+          <div><dt>Marca comercial</dt><dd>MANDELBROT DIGITAL MARKETING AGENCY</dd></div>
+          <div><dt>Razón social</dt><dd>NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L.</dd></div>
+          <div><dt>RUC</dt><dd>20615595617</dd></div>
+          <div><dt>Gerente General</dt><dd>Joseph Edu Torreblanca Paz</dd></div>
+          <div><dt>Dirección fiscal</dt><dd>Urbanización Los Licenciados, Pasaje LOA H-7, distrito de San Sebastián, provincia y departamento del Cusco, Perú.</dd></div>
+        </dl>
+        <p class="nota">MANDELBROT DIGITAL MARKETING AGENCY responde legalmente ante clientes y autoridades a través de NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L., titular de la marca y responsable de la facturación y de los contratos de servicio.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
 <section id="atencion">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -461,7 +618,17 @@ footer .pay-mini{color:var(--yape);font-weight:600}
           <span class="at-ring r1"></span><span class="at-ring r2"></span><span class="at-ring r3"></span>
           <span class="at-orb o1"><i></i></span><span class="at-orb o2"><i class="m"></i></span>
           <span class="at-core">ONLINE</span>
+          <div class="at-char" id="atChar" aria-hidden="true"></div>
         </div>
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+          <filter id="chromaVerde" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%">
+            <!-- Pantalla verde: el verde puro pasa a transparente y se reduce el reflejo verde en los bordes -->
+            <feColorMatrix type="matrix" values="1 0 0 0 0
+                                                  0.1 0.8 0.1 0 0
+                                                  0 0 1 0 0
+                                                  2 -4 2 0 1.4"/>
+          </filter>
+        </svg>
         <h3>Tu agencia, a un clic</h3>
         <p>Toda nuestra atención es <b>vía virtual</b>: reuniones por video, propuestas, aprobaciones y seguimiento desde cualquier lugar. Menos tiempo en traslados, más tiempo en hacer crecer tu marca.</p>
         <div class="at-chips"><span>Google Meet</span><span>Zoom</span><span>WhatsApp</span></div>
@@ -552,6 +719,40 @@ footer .pay-mini{color:var(--yape);font-weight:600}
   </div>
 </section>
 
+<section id="autor">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker-sec">El autor</span>
+      <h2>Detrás de Mandelbrot</h2>
+      <p>Estrategia, diseño y tecnología con visión de negocio, desde Cusco para marcas que quieren crecer.</p>
+    </div>
+    <div class="autor-grid">
+      <div class="autor-fotos reveal">
+        <figure class="foto foto-a"><img data-autor="portada.1" alt="Joseph Edu Torreblanca Paz, autor y fundador"></figure>
+        <figure class="foto foto-b"><img data-autor="portada.2" alt="Joseph Edu Torreblanca Paz en Cusco"></figure>
+        <div class="autor-sello"><b>Cusco · Perú</b><span>Atención virtual · Meet o Zoom</span></div>
+      </div>
+      <div class="autor-info reveal">
+        <span class="badge">Fundador · Estratega de marketing digital</span>
+        <h3>Joseph Edu Torreblanca Paz</h3>
+        <p class="rol">Gerente General de NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L. · Fundador de MANDELBROT DIGITAL MARKETING AGENCY</p>
+        <p>Emprendedor y estratega de marketing digital radicado en Cusco, Perú. Impulsa de forma simultánea distintos emprendimientos en Cusco y en la macrorregión sur del país, lo que le da una mirada práctica de lo que una marca necesita para vender, no solo para verse bien.</p>
+        <p>Su trabajo académico en administración de negocios se combina con el diseño, el contenido audiovisual y el desarrollo web para ofrecer soluciones completas: identidad de marca, campañas, sitios web, posicionamiento SEO y chatbots bajo una misma dirección creativa.</p>
+        <ul class="autor-pilares">
+          <li><i>1</i><div><b>Estrategia con visión de negocio</b><span>Cada pieza creativa responde a un objetivo comercial claro.</span></div></li>
+          <li><i>2</i><div><b>Identidad y creatividad</b><span>Marcas con presencia memorable, coherente y profesional en todos sus puntos de contacto.</span></div></li>
+          <li><i>3</i><div><b>Cercanía y transparencia</b><span>Trato directo por WhatsApp, precios publicados y reuniones por Google Meet o Zoom.</span></div></li>
+        </ul>
+        <div class="autor-chips"><span>Marketing verde</span><span>Branding</span><span>Contenido audiovisual</span><span>Desarrollo web</span><span>SEO</span><span>Chatbots</span></div>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="https://wa.me/51996989580?text=Hola%20Joseph%2C%20vi%20la%20web%20de%20Mandelbrot%20y%20quiero%20conversar%20sobre%20mi%20proyecto." target="_blank" rel="noopener">Hablar con Joseph</a>
+          <a class="btn btn-ghost" href="#portafolio">Ver portafolio y precios</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="marcas">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -636,38 +837,38 @@ footer .pay-mini{color:var(--yape);font-weight:600}
           <thead><tr><th>Servicio</th><th>Tipo</th><th>Formato</th><th>Precio</th><th>Acción</th></tr></thead>
           <tbody>
             <tr class="cat"><td colspan="5">Identidad de marca</td></tr>
-            <tr><td>Diseño o actualización de logo</td><td>Diseño</td><td>PNG / JPG</td><td class="precio">S/. 50</td><td><button type="button" class="btn-row" data-item="Diseño o actualización de logo" data-precio="S/. 50" data-servicio="branding">VER DETALLES</button></td></tr>
-            <tr><td>Logo animación 2D</td><td>Video</td><td>2D / MP4</td><td class="precio">S/. 150</td><td><button type="button" class="btn-row" data-item="Logo animación 2D" data-precio="S/. 150" data-servicio="contenido">VER DETALLES</button></td></tr>
-            <tr><td>Logo animación 3D</td><td>Video</td><td>3D / MP4</td><td class="precio">S/. 350</td><td><button type="button" class="btn-row" data-item="Logo animación 3D" data-precio="S/. 350" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr><td>Diseño o actualización de logo</td><td>Diseño</td><td>PNG / JPG</td><td class="precio">S/. 20</td><td><button type="button" class="btn-row" data-item="Diseño o actualización de logo" data-precio="S/. 20" data-servicio="branding">VER DETALLES</button></td></tr>
+            <tr><td>Logo animación 2D</td><td>Video</td><td>2D / MP4</td><td class="precio">S/. 30</td><td><button type="button" class="btn-row" data-item="Logo animación 2D" data-precio="S/. 30" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr><td>Logo animación 3D</td><td>Video</td><td>3D / MP4</td><td class="precio">S/. 50</td><td><button type="button" class="btn-row" data-item="Logo animación 3D" data-precio="S/. 50" data-servicio="contenido">VER DETALLES</button></td></tr>
             <tr class="cat"><td colspan="5">Contenido para redes sociales</td></tr>
-            <tr><td>Diseño de flyer animado para redes sociales</td><td>Video</td><td>Animación / MP4</td><td class="precio">S/. 120</td><td><button type="button" class="btn-row" data-item="Diseño de flyer animado para redes sociales" data-precio="S/. 120" data-servicio="contenido">VER DETALLES</button></td></tr>
-            <tr><td>Diseño de flyer imagen para redes sociales</td><td>Imagen</td><td>JPG / PNG</td><td class="precio">S/. 80</td><td><button type="button" class="btn-row" data-item="Diseño de flyer imagen para redes sociales" data-precio="S/. 80" data-servicio="social">VER DETALLES</button></td></tr>
-            <tr><td>Portada Facebook imagen</td><td>Imagen</td><td>JPG 820 x 312 px</td><td class="precio">S/. 50</td><td><button type="button" class="btn-row" data-item="Portada Facebook imagen" data-precio="S/. 50" data-servicio="social">VER DETALLES</button></td></tr>
-            <tr><td>Portada Facebook video</td><td>Video</td><td>MP4 820 x 312 px</td><td class="precio">S/. 200</td><td><button type="button" class="btn-row" data-item="Portada Facebook video" data-precio="S/. 200" data-servicio="contenido">VER DETALLES</button></td></tr>
-            <tr><td>Social media, campaña 1 mes en Facebook</td><td>Campaña</td><td>5 post / mes</td><td class="precio">S/. 300</td><td><button type="button" class="btn-row" data-item="Social media, campaña 1 mes en Facebook" data-precio="S/. 300" data-servicio="social">VER DETALLES</button></td></tr>
+            <tr><td>Diseño de flyer animado para redes sociales</td><td>Video</td><td>Animación / MP4</td><td class="precio">S/. 30</td><td><button type="button" class="btn-row" data-item="Diseño de flyer animado para redes sociales" data-precio="S/. 30" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr><td>Diseño de flyer imagen para redes sociales</td><td>Imagen</td><td>JPG / PNG</td><td class="precio">S/. 30</td><td><button type="button" class="btn-row" data-item="Diseño de flyer imagen para redes sociales" data-precio="S/. 30" data-servicio="social">VER DETALLES</button></td></tr>
+            <tr><td>Portada Facebook imagen</td><td>Imagen</td><td>JPG 820 x 312 px</td><td class="precio">S/. 30</td><td><button type="button" class="btn-row" data-item="Portada Facebook imagen" data-precio="S/. 30" data-servicio="social">VER DETALLES</button></td></tr>
+            <tr><td>Portada Facebook video</td><td>Video</td><td>MP4 820 x 312 px</td><td class="precio">S/. 50</td><td><button type="button" class="btn-row" data-item="Portada Facebook video" data-precio="S/. 50" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr><td>Social media, campaña 1 mes en Facebook</td><td>Campaña</td><td>5 post / mes</td><td class="precio">S/. 100</td><td><button type="button" class="btn-row" data-item="Social media, campaña 1 mes en Facebook" data-precio="S/. 100" data-servicio="social">VER DETALLES</button></td></tr>
             <tr class="cat"><td colspan="5">Producción audiovisual</td></tr>
-            <tr><td>Video publicitario básico</td><td>Video</td><td>MP4 Full HD</td><td class="precio">S/. 400</td><td><button type="button" class="btn-row" data-item="Video publicitario básico" data-precio="S/. 400" data-servicio="contenido">VER DETALLES</button></td></tr>
-            <tr><td>Video publicitario creativo</td><td>Video</td><td>MP4 4K</td><td class="precio">S/. 800</td><td><button type="button" class="btn-row" data-item="Video publicitario creativo" data-precio="S/. 800" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr><td>Video publicitario básico</td><td>Video</td><td>MP4 Full HD</td><td class="precio">S/. 50</td><td><button type="button" class="btn-row" data-item="Video publicitario básico" data-precio="S/. 50" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr><td>Video publicitario creativo</td><td>Video</td><td>MP4 4K</td><td class="precio">S/. 80</td><td><button type="button" class="btn-row" data-item="Video publicitario creativo" data-precio="S/. 80" data-servicio="contenido">VER DETALLES</button></td></tr>
             <tr><td>Filmación, edición y montaje de video drone 4K</td><td>Video</td><td>MP4 4K / Drone</td><td class="precio">S/. 400</td><td><button type="button" class="btn-row" data-item="Filmación, edición y montaje de video drone 4K" data-precio="S/. 400" data-servicio="contenido">VER DETALLES</button></td></tr>
-            <tr><td>Sesión de fotografía profesional + retoque</td><td>Fotografía</td><td>JPG alta res.</td><td class="precio">S/. 400</td><td><button type="button" class="btn-row" data-item="Sesión de fotografía profesional + retoque" data-precio="S/. 400" data-servicio="contenido">VER DETALLES</button></td></tr>
+            <tr><td>Sesión de fotografía profesional + retoque</td><td>Fotografía</td><td>JPG alta res.</td><td class="precio">S/. 150</td><td><button type="button" class="btn-row" data-item="Sesión de fotografía profesional + retoque" data-precio="S/. 150" data-servicio="contenido">VER DETALLES</button></td></tr>
             <tr class="cat"><td colspan="5">Desarrollo web</td></tr>
-            <tr><td>Página web simple con dominio y hosting 1 año</td><td>Web</td><td>HTML / WordPress</td><td class="precio">S/. 1,500</td><td><button type="button" class="btn-row" data-item="Página web simple con dominio y hosting 1 año" data-precio="S/. 1,500" data-servicio="web">VER DETALLES</button></td></tr>
-            <tr><td>Página web personalizada, 2 idiomas + galería</td><td>Web</td><td>WordPress / React</td><td class="precio">S/. 2,800</td><td><button type="button" class="btn-row" data-item="Página web personalizada, 2 idiomas + galería" data-precio="S/. 2,800" data-servicio="web">VER DETALLES</button></td></tr>
+            <tr><td>Página web simple con dominio y hosting 1 año</td><td>Web</td><td>HTML / WordPress</td><td class="precio">S/. 400</td><td><button type="button" class="btn-row" data-item="Página web simple con dominio y hosting 1 año" data-precio="S/. 400" data-servicio="web">VER DETALLES</button></td></tr>
+            <tr><td>Página web personalizada, 2 idiomas + galería</td><td>Web</td><td>WordPress / React</td><td class="precio">S/. 500</td><td><button type="button" class="btn-row" data-item="Página web personalizada, 2 idiomas + galería" data-precio="S/. 500" data-servicio="web">VER DETALLES</button></td></tr>
             <tr class="cat"><td colspan="5">Impresión corporativa</td></tr>
-            <tr><td>Impresión de papelería corporativa, 3 a 4 días</td><td>Impresión</td><td>General</td><td class="precio">S/. 250</td><td><button type="button" class="btn-row" data-item="Impresión de papelería corporativa" data-precio="S/. 250" data-servicio="branding">VER DETALLES</button></td></tr>
-            <tr><td>Diseño e impresión de tarjetas de presentación, 1 millar</td><td>Impresión</td><td>9 x 5 cm</td><td class="precio">S/. 150</td><td><button type="button" class="btn-row" data-item="Diseño e impresión de tarjetas de presentación, 1 millar" data-precio="S/. 150" data-servicio="branding">VER DETALLES</button></td></tr>
-            <tr><td>Diseño e impresión de flyer personalizado, 1 millar</td><td>Impresión</td><td>A6 / 1 millar</td><td class="precio">S/. 250</td><td><button type="button" class="btn-row" data-item="Diseño e impresión de flyer personalizado, 1 millar" data-precio="S/. 250" data-servicio="branding">VER DETALLES</button></td></tr>
+            <tr><td>Impresión de papelería corporativa, 3 a 4 días</td><td>Impresión</td><td>General</td><td class="precio">S/. 90</td><td><button type="button" class="btn-row" data-item="Impresión de papelería corporativa" data-precio="S/. 90" data-servicio="branding">VER DETALLES</button></td></tr>
+            <tr><td>Diseño e impresión de tarjetas de presentación, 1 millar</td><td>Impresión</td><td>9 x 5 cm</td><td class="precio">S/. 90</td><td><button type="button" class="btn-row" data-item="Diseño e impresión de tarjetas de presentación, 1 millar" data-precio="S/. 90" data-servicio="branding">VER DETALLES</button></td></tr>
+            <tr><td>Diseño e impresión de flyer personalizado, 1 millar</td><td>Impresión</td><td>A6 / 1 millar</td><td class="precio">S/. 100</td><td><button type="button" class="btn-row" data-item="Diseño e impresión de flyer personalizado, 1 millar" data-precio="S/. 100" data-servicio="branding">VER DETALLES</button></td></tr>
             <tr class="cat"><td colspan="5">Posicionamiento SEO</td></tr>
-            <tr><td>Posicionamiento SEO básico</td><td>SEO</td><td>Mensual</td><td class="precio">S/. 320 – 800 /mes</td><td><button type="button" class="btn-row" data-item="Posicionamiento SEO básico" data-precio="S/. 320 – 800 /mes" data-servicio="seo">VER DETALLES</button></td></tr>
-            <tr><td>Posicionamiento SEO local</td><td>SEO</td><td>Mensual · Google Maps</td><td class="precio">S/. 720 – 1,200 /mes</td><td><button type="button" class="btn-row" data-item="Posicionamiento SEO local" data-precio="S/. 720 – 1,200 /mes" data-servicio="seo">VER DETALLES</button></td></tr>
-            <tr><td>Posicionamiento SEO para PYME</td><td>SEO</td><td>Mensual · técnico + contenido</td><td class="precio">S/. 1,200 – 2,800 /mes</td><td><button type="button" class="btn-row" data-item="Posicionamiento SEO para PYME" data-precio="S/. 1,200 – 2,800 /mes" data-servicio="seo">VER DETALLES</button></td></tr>
-            <tr><td>Posicionamiento SEO competitivo</td><td>SEO</td><td>Mensual · autoridad web</td><td class="precio">S/. 2,800 – 6,400 /mes</td><td><button type="button" class="btn-row" data-item="Posicionamiento SEO competitivo" data-precio="S/. 2,800 – 6,400 /mes" data-servicio="seo">VER DETALLES</button></td></tr>
-            <tr><td>Posicionamiento SEO corporativo</td><td>SEO</td><td>Mensual · equipo dedicado</td><td class="precio">S/. 6,400 – 12,000+ /mes</td><td><button type="button" class="btn-row" data-item="Posicionamiento SEO corporativo" data-precio="S/. 6,400 – 12,000+ /mes" data-servicio="seo">VER DETALLES</button></td></tr>
+            <tr><td>Posicionamiento SEO básico</td><td>SEO</td><td>Mensual</td><td class="precio">S/. 220 – 400 /mes</td><td><button type="button" class="btn-row" data-item="Posicionamiento SEO básico" data-precio="S/. 220 – 400 /mes" data-servicio="seo">VER DETALLES</button></td></tr>
+            <tr><td>Posicionamiento SEO local</td><td>SEO</td><td>Mensual · Google Maps</td><td class="precio">S/. 320 – 700 /mes</td><td><button type="button" class="btn-row" data-item="Posicionamiento SEO local" data-precio="S/. 320 – 700 /mes" data-servicio="seo">VER DETALLES</button></td></tr>
+            <tr><td>Posicionamiento SEO para PYME</td><td>SEO</td><td>Mensual · técnico + contenido</td><td class="precio">S/. 600 – 1,400 /mes</td><td><button type="button" class="btn-row" data-item="Posicionamiento SEO para PYME" data-precio="S/. 600 – 1,400 /mes" data-servicio="seo">VER DETALLES</button></td></tr>
+            <tr><td>Posicionamiento SEO competitivo</td><td>SEO</td><td>Mensual · autoridad web</td><td class="precio">S/. 1,400 – 3,200 /mes</td><td><button type="button" class="btn-row" data-item="Posicionamiento SEO competitivo" data-precio="S/. 1,400 – 3,200 /mes" data-servicio="seo">VER DETALLES</button></td></tr>
+            <tr><td>Posicionamiento SEO corporativo</td><td>SEO</td><td>Mensual · equipo dedicado</td><td class="precio">S/. 3,000 – 6,000+ /mes</td><td><button type="button" class="btn-row" data-item="Posicionamiento SEO corporativo" data-precio="S/. 3,000 – 6,000+ /mes" data-servicio="seo">VER DETALLES</button></td></tr>
             <tr class="cat"><td colspan="5">Desarrollo de chatbots</td></tr>
-            <tr><td>Chatbot web básico (respuestas predefinidas)</td><td>Chatbot</td><td>Implementación única</td><td class="precio">S/. 240 – 640<br><small class="mant">Mant. S/. 0 – 120 /mes</small></td><td><button type="button" class="btn-row" data-item="Chatbot web básico (respuestas predefinidas)" data-precio="S/. 240 – 640 + Mant. S/. 0 – 120 /mes" data-servicio="chatbot">VER DETALLES</button></td></tr>
-            <tr><td>Chatbot intermedio (preguntas frecuentes y captura de contactos)</td><td>Chatbot</td><td>Implementación única</td><td class="precio">S/. 640 – 1,600<br><small class="mant">Mant. S/. 80 – 240 /mes</small></td><td><button type="button" class="btn-row" data-item="Chatbot intermedio (preguntas frecuentes y captura de contactos)" data-precio="S/. 640 – 1,600 + Mant. S/. 80 – 240 /mes" data-servicio="chatbot">VER DETALLES</button></td></tr>
-            <tr><td>Chatbot con IA entrenado con la información del negocio</td><td>Chatbot + IA</td><td>Implementación única</td><td class="precio">S/. 1,200 – 4,000<br><small class="mant">Mant. S/. 120 – 480 /mes</small></td><td><button type="button" class="btn-row" data-item="Chatbot con IA entrenado con la información del negocio" data-precio="S/. 1,200 – 4,000 + Mant. S/. 120 – 480 /mes" data-servicio="chatbot">VER DETALLES</button></td></tr>
-            <tr><td>Chatbot personalizado con IA e integraciones</td><td>Chatbot + IA</td><td>Implementación única</td><td class="precio">S/. 4,000 – 12,000+<br><small class="mant">Mant. S/. 240 – 1,200+ /mes</small></td><td><button type="button" class="btn-row" data-item="Chatbot personalizado con IA e integraciones" data-precio="S/. 4,000 – 12,000+ + Mant. S/. 240 – 1,200+ /mes" data-servicio="chatbot">VER DETALLES</button></td></tr>
+            <tr><td>Chatbot web básico (respuestas predefinidas)</td><td>Chatbot</td><td>Implementación única</td><td class="precio">S/. 140 – 320<br><small class="mant">Mant. S/. 0 – 120 /mes</small></td><td><button type="button" class="btn-row" data-item="Chatbot web básico (respuestas predefinidas)" data-precio="S/. 140 – 320 + Mant. S/. 0 – 120 /mes" data-servicio="chatbot">VER DETALLES</button></td></tr>
+            <tr><td>Chatbot intermedio (preguntas frecuentes y captura de contactos)</td><td>Chatbot</td><td>Implementación única</td><td class="precio">S/. 320 – 800<br><small class="mant">Mant. S/. 80 – 240 /mes</small></td><td><button type="button" class="btn-row" data-item="Chatbot intermedio (preguntas frecuentes y captura de contactos)" data-precio="S/. 320 – 800 + Mant. S/. 80 – 240 /mes" data-servicio="chatbot">VER DETALLES</button></td></tr>
+            <tr><td>Chatbot con IA entrenado con la información del negocio</td><td>Chatbot + IA</td><td>Implementación única</td><td class="precio">S/. 600 – 2,000<br><small class="mant">Mant. S/. 120 – 480 /mes</small></td><td><button type="button" class="btn-row" data-item="Chatbot con IA entrenado con la información del negocio" data-precio="S/. 600 – 2,000 + Mant. S/. 120 – 480 /mes" data-servicio="chatbot">VER DETALLES</button></td></tr>
+            <tr><td>Chatbot personalizado con IA e integraciones</td><td>Chatbot + IA</td><td>Implementación única</td><td class="precio">S/. 2,000 – 6,000+<br><small class="mant">Mant. S/. 240 – 1,200+ /mes</small></td><td><button type="button" class="btn-row" data-item="Chatbot personalizado con IA e integraciones" data-precio="S/. 2,000 – 6,000+ + Mant. S/. 240 – 1,200+ /mes" data-servicio="chatbot">VER DETALLES</button></td></tr>
             <tr class="cat"><td colspan="5">Carrito de compras para web existente</td></tr>
             <tr><td>Carrito sencillo (añadir y eliminar productos)</td><td>Web</td><td>Integración a tu web</td><td class="precio">S/. 240 – 560</td><td><button type="button" class="btn-row" data-item="Carrito sencillo (añadir y eliminar productos)" data-precio="S/. 240 – 560" data-servicio="carrito">VER DETALLES</button></td></tr>
             <tr><td>Carrito con cantidades, subtotales y total</td><td>Web</td><td>Integración a tu web</td><td class="precio">S/. 400 – 960</td><td><button type="button" class="btn-row" data-item="Carrito con cantidades, subtotales y total" data-precio="S/. 400 – 960" data-servicio="carrito">VER DETALLES</button></td></tr>
@@ -737,10 +938,32 @@ footer .pay-mini{color:var(--yape);font-weight:600}
         </div>
       </div>
     </div>
+    <div class="fact-card reveal">
+      <h4>🧾 Datos para boleta o factura</h4>
+      <p>Los comprobantes de pago se emiten a nombre de <b>NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L.</b> · <b>RUC 20615595617</b>, empresa que opera la marca comercial MANDELBROT DIGITAL MARKETING AGENCY.</p>
+      <p>Dirección fiscal: Urbanización Los Licenciados, Pasaje LOA H-7, distrito de San Sebastián, provincia y departamento del Cusco, Perú.</p>
+    </div>
     <div class="yape-steps">
       <div class="ystep reveal" data-n="1"><h4>Escanea el QR</h4><p>Abre tu app de Yape, toca el ícono QR y escanea el código de esta página.</p></div>
       <div class="ystep reveal" data-n="2"><h4>Confirma el monto</h4><p>Ingresa el monto acordado en tu cotización y confirma el pago con tu clave.</p></div>
       <div class="ystep reveal" data-n="3"><h4>Envía tu comprobante</h4><p>Toma una captura y envíala por WhatsApp para confirmar tu pago al instante.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker-sec">Preguntas frecuentes</span>
+      <h2>Lo que más nos preguntan</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item"><summary>¿Cómo solicito una cotización?</summary><p>Escríbenos por WhatsApp al +51 996 989 580, usa el formulario de contacto o pulsa VER DETALLES en cualquier servicio del portafolio para cotizar ese servicio directamente.</p></details>
+      <details class="faq-item"><summary>¿La atención es presencial o virtual?</summary><p>Somos un negocio online y virtual: las reuniones se hacen por Google Meet o Zoom. La atención presencial es solo en Cusco, Perú, previa coordinación.</p></details>
+      <details class="faq-item"><summary>¿A nombre de quién se emite la factura?</summary><p>MANDELBROT DIGITAL MARKETING AGENCY es una marca comercial operada por NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L. (RUC 20615595617). Las boletas, facturas y contratos se emiten a nombre de esa razón social.</p></details>
+      <details class="faq-item"><summary>¿Qué medios de pago aceptan?</summary><p>Yape, PayPal y transferencia bancaria BCP. Los detalles están en la sección Medios de pago.</p></details>
+      <details class="faq-item"><summary>¿Cuál es el horario de atención?</summary><p>De lunes a viernes, de 9 a.m. a 9 p.m.</p></details>
+      <details class="faq-item"><summary>¿Puedo trabajar con ustedes si no vivo en Cusco?</summary><p>Sí. Como la atención es virtual, puedes coordinar tu proyecto desde donde estés; lo presencial se limita a Cusco.</p></details>
     </div>
   </div>
 </section>
@@ -758,6 +981,7 @@ footer .pay-mini{color:var(--yape);font-weight:600}
           <div class="info-item"><h4>Teléfono</h4><a href="tel:+51996989580">+51996989580</a></div>
           <div class="info-item"><h4>Atención virtual</h4><p>Google Meet o Zoom · Agenda tu reunión por WhatsApp</p></div>
           <div class="info-item"><h4>Atención presencial · previa coordinación</h4><p>Solo en Cusco, Perú · URB. LOS LICENCIADOS PSJ LOA H-7 - CUSCO - PERÚ</p></div>
+          <div class="info-item"><h4>Datos de facturación</h4><p>NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L. · RUC 20615595617<br>Marca comercial: MANDELBROT DIGITAL MARKETING AGENCY</p></div>
           <div class="info-item"><h4>Horario de atención</h4><p>DE LUNES A VIERNES DE 9 A.M A 9 P.M</p></div>
         </div>
         <div class="map-card reveal">
@@ -791,6 +1015,7 @@ footer .pay-mini{color:var(--yape);font-weight:600}
           </select>
         </label>
         <label>Mensaje<textarea id="mensaje" placeholder="Cuéntanos sobre tu proyecto"></textarea></label>
+        <label class="chk"><input id="acepta" type="checkbox" required><span>He leído y acepto los <a data-legal="terminos">Términos y Condiciones</a> y la <a data-legal="privacidad">Política de Privacidad</a>, y autorizo ser contactado por <b>NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L.</b> (RUC 20615595617), titular de la marca MANDELBROT DIGITAL MARKETING AGENCY, para atender mi solicitud.</span></label>
         <button class="btn btn-primary" type="submit">Enviar por WhatsApp</button>
       </form>
     </div>
@@ -798,11 +1023,56 @@ footer .pay-mini{color:var(--yape);font-weight:600}
 </section>
 </main>
 
+<a class="fab fab-wa" href="https://wa.me/51996989580?text=Hola%20Mandelbrot%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">💬</a>
+<button class="fab fab-top" id="subir" type="button" aria-label="Volver arriba">↑</button>
 <footer>
-  <span>Mandelbrot Digital Marketing Agency - Cusco, Perú</span>
+  <span>© 2026 MANDELBROT DIGITAL MARKETING AGENCY. Todos los derechos reservados.</span>
+  <span class="foot-legal"><b>MANDELBROT DIGITAL MARKETING AGENCY</b> es una marca comercial operada por <b>NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L.</b> | RUC: 20615595617</span>
+  <span class="foot-legal">Dirección fiscal: Urbanización Los Licenciados, Pasaje LOA H-7, distrito de San Sebastián, provincia y departamento del Cusco, Perú.</span>
   <span>Negocio online y virtual · Atención por Google Meet o Zoom · Presencial solo en Cusco, previa coordinación</span>
   <span class="pay-mini">Medios de pago: Yape · PayPal · Transferencia bancaria BCP</span>
+  <span class="legal-links"><a data-legal="reclamaciones">📖 Libro de Reclamaciones</a><a data-legal="terminos">Términos y Condiciones</a><a data-legal="privacidad">Política de Privacidad</a></span>
+  <span class="foot-links"><a href="#nosotros">Nosotros</a> · <a href="#autor">El autor</a> · <a href="#faq">Preguntas frecuentes</a> · <a href="https://wa.me/51996989580" target="_blank" rel="noopener">WhatsApp</a></span>
 </footer>
+
+<div class="modal" id="modalLegal" role="dialog" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" id="cerrarLegal" type="button" aria-label="Cerrar">✕</button>
+    <div class="lg-body" id="lgBody"></div>
+  </div>
+</div>
+<template id="tpl-reclamaciones">
+  <h3>Libro de Reclamaciones</h3>
+  <p>Conforme al Código de Protección y Defensa del Consumidor (Ley N.º 29571), ponemos a tu disposición este Libro de Reclamaciones virtual. Proveedor: <b>NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L.</b> · RUC 20615595617 · Urbanización Los Licenciados, Pasaje LOA H-7, distrito de San Sebastián, provincia y departamento del Cusco, Perú.</p>
+  <form id="formReclamo">
+    <label>Nombre completo<input id="rcNombre" type="text" required></label>
+    <label>DNI / CE<input id="rcDoc" type="text" required></label>
+    <label>Correo o teléfono de contacto<input id="rcContacto" type="text" required></label>
+    <label>Tipo<select id="rcTipo"><option>Reclamo (disconformidad con el servicio)</option><option>Queja (malestar sobre la atención)</option></select></label>
+    <label>Detalle<textarea id="rcDetalle" required placeholder="Describe lo ocurrido y lo que solicitas"></textarea></label>
+    <button class="btn btn-primary" type="submit">Enviar reclamo</button>
+  </form>
+  <p>Responderemos en un plazo máximo de 15 días calendario. La formulación del reclamo no impide acudir a INDECOPI.</p>
+</template>
+<template id="tpl-terminos">
+  <h3>Términos y Condiciones</h3>
+  <p>Última actualización: 2026. Los servicios publicitados bajo la marca MANDELBROT DIGITAL MARKETING AGENCY son prestados y facturados por NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L. (RUC 20615595617).</p>
+  <h4>1. Servicios y cotizaciones</h4><p>Cada proyecto se formaliza con una cotización aprobada por el cliente, que detalla alcance, precio, plazos y entregables.</p>
+  <h4>2. Pagos</h4><p>Los medios de pago son Yape, PayPal y transferencia bancaria. El inicio del trabajo se confirma con el adelanto acordado en la cotización.</p>
+  <h4>3. Modalidad de atención</h4><p>La atención es principalmente virtual (Google Meet o Zoom); la atención presencial es solo en Cusco, previa coordinación.</p>
+  <h4>4. Propiedad intelectual</h4><p>Los entregables finales se transfieren al cliente una vez cancelado el total del servicio, salvo pacto distinto por escrito.</p>
+  <h4>5. Revisiones y cambios</h4><p>Las rondas de revisión incluidas se indican en cada cotización; cambios adicionales pueden tener costo extra.</p>
+  <h4>6. Libro de Reclamaciones</h4><p>Disponible en el pie de página de este sitio.</p>
+  <h4>7. Ley aplicable</h4><p>Estos términos se rigen por las leyes de la República del Perú.</p>
+</template>
+<template id="tpl-privacidad">
+  <h3>Política de Privacidad</h3>
+  <p>Última actualización: 2026. El titular del banco de datos y responsable del tratamiento es <b>NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L.</b> (RUC 20615595617), con domicilio en Urbanización Los Licenciados, Pasaje LOA H-7, distrito de San Sebastián, provincia y departamento del Cusco, Perú, que opera la marca MANDELBROT DIGITAL MARKETING AGENCY.</p>
+  <h4>Datos que recopilamos</h4><p>Nombre o marca, servicio de interés, modalidad de atención y el mensaje que nos envías por el formulario o WhatsApp.</p>
+  <h4>Finalidad</h4><p>Atender tu solicitud, elaborar cotizaciones, contactarte y brindarte el servicio contratado.</p>
+  <h4>Tus derechos</h4><p>Conforme a la Ley N.º 29733 de Protección de Datos Personales, puedes ejercer tus derechos de acceso, rectificación, cancelación y oposición escribiéndonos por WhatsApp al +51 996 989 580.</p>
+  <h4>Conservación y terceros</h4><p>Conservamos tus datos mientras exista relación comercial o lo exija la ley. No vendemos tus datos a terceros.</p>
+</template>
 
 <div class="modal" id="modalServicio" role="dialog" aria-modal="true">
   <div class="modal-card">
@@ -834,6 +1104,7 @@ footer .pay-mini{color:var(--yape);font-weight:600}
         <p class="yape-num">+51 996 989 580 <button class="copy-btn" data-copy="996989580" type="button">Copiar</button></p>
         <a class="btn btn-yape" id="mPagado" target="_blank" rel="noopener">Ya pagué, enviar comprobante</a>
         <p class="titular">Titular: Joseph Edu Torreblanca Paz</p>
+        <p class="fact">Comprobante a nombre de NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L. · RUC 20615595617 (marca comercial MANDELBROT DIGITAL MARKETING AGENCY).</p>
       </aside>
     </div>
   </div>
@@ -920,25 +1191,25 @@ const SERVICIOS={
   desc:'Tu cliente decide en 3 segundos si tu negocio inspira confianza. Con una identidad visual profesional —logo, colores, tipografías y piezas coherentes— dejas de parecer "uno más" y te conviertes en la opción obvia. El buen diseño no es un gasto: es la diferencia entre competir por precio y vender por valor.',
   incluye:['Diseño o renovación completa de logo','Paleta de color y tipografías con psicología de marca','Manual de marca para mantener coherencia siempre','Plantillas listas para redes, anuncios e impresos','Dirección creativa para toda tu comunicación'],
   resultados:['Percepción premium: puedes cobrar más por lo mismo','Confianza inmediata en redes y publicidad','Marca memorable que se recuerda y se recomienda'],
-  precio:'Desde S/. 50'},
+  precio:'Desde S/. 20'},
  social:{num:'03',titulo:'Social media',
   hook:'"Convierte tu red social en tu vendedor 24/7."',
   desc:'Una red social abandonada espanta clientes; una red activa y estratégica los enamora. Nos encargamos de todo: calendario, diseño, textos y publicación, para que tu marca se vea viva, profesional y siempre vendiendo, incluso mientras tú atiendes tu negocio.',
   incluye:['Calendario de contenido mensual estratégico','Diseño de posts con tu identidad de marca','Copywriting y hashtags que generan alcance','Publicación programada y community management','Reporte de crecimiento y engagement'],
   resultados:['Perfil que transmite confianza y vende solo','Comunidad que interactúa y pregunta por tus productos','Presencia constante sin que muevas un dedo'],
-  precio:'Campaña 1 mes desde S/. 300'},
+  precio:'Campaña 1 mes desde S/. 100'},
  web:{num:'04',titulo:'Web y conversión',
   hook:'"Tu negocio abierto y vendiendo mientras duermes."',
   desc:'El 80% de tus clientes te busca en Google antes de comprarte. Si no apareces con una web profesional, aparecen tus competidores. Creamos páginas rápidas, elegantes y diseñadas para convertir visitas en contactos por WhatsApp, con dominio propio y todo listo para posicionar en buscadores.',
   incluye:['Diseño moderno alineado a tu marca','Textos persuasivos enfocados en venta','Botones de WhatsApp y contacto en 1 clic','SEO básico, seguridad y optimización de velocidad','Dominio + hosting incluidos el primer año'],
   resultados:['Credibilidad inmediata, al nivel de las grandes marcas','Consultas automáticas las 24 horas','Un canal propio que no depende de algoritmos'],
-  precio:'Desde S/. 1,500'},
+  precio:'Desde S/. 400'},
  contenido:{num:'05',titulo:'Contenido audiovisual',
   hook:'"Si una imagen vale mil palabras, un video vale mil ventas."',
   desc:'El contenido audiovisual es lo que más detiene el scroll y lo que más vende en redes. Producimos reels, fotos y videos publicitarios con calidad de cine: iluminación, encuadre, edición y color que hacen que tu producto se vea irresistible.',
   incluye:['Reels y videos publicitarios listos para anunciar','Sesión de fotografía profesional con retoque','Guion, dirección y puesta en escena','Edición, música y colorización profesional','Opcional: tomas aéreas con drone en 4K'],
   resultados:['Contenido que detiene el scroll y genera deseo','Más alcance orgánico y veces compartido','Marca percibida como líder de su categoría'],
-  precio:'Desde S/. 120'},
+  precio:'Desde S/. 30'},
  estrategia:{num:'06',titulo:'Estrategia comercial',
   hook:'"Deja de adivinar: juega con mapa y ventaja."',
   desc:'La mayoría de negocios pierde dinero en publicidad por decidir con corazonadas. Nosotros convertimos datos en decisiones: investigamos tu mercado, afinamos tu oferta y diseñamos el plan de acción para que cada inversión tenga rumbo, meta y retorno.',
@@ -950,13 +1221,13 @@ const SERVICIOS={
   desc:'Cuando alguien en Cusco o en cualquier parte del Perú busca lo que vendes, decide entre los primeros resultados de Google. El posicionamiento SEO mejora de forma sostenida la visibilidad de tu sitio para que te encuentren clientes que ya están buscando tu servicio, sin pagar por cada clic. Trabajamos la parte técnica, el contenido y la autoridad de tu web con reportes claros.',
   incluye:['Auditoría técnica y de contenido de tu sitio','Investigación de palabras clave con intención de compra','Optimización on-page y estructura del sitio','Contenido y enlaces según el plan elegido','Reporte mensual de posiciones, visitas y consultas'],
   resultados:['Más visitas orgánicas que no dependen de pauta','Clientes que llegan con intención real de compra','Un activo digital que gana valor mes a mes'],
-  precio:'Desde S/. 320 /mes'},
+  precio:'Desde S/. 220 /mes'},
  chatbot:{num:'08',titulo:'Desarrollo de chatbots',
   hook:'"Un vendedor que atiende a tus clientes las 24 horas, sin sueldo extra."',
   desc:'Desarrollamos chatbots para todo tipo de emprendimientos: restaurantes, hoteles, agencias de viaje, clínicas, tiendas, inmobiliarias y servicios profesionales. Responden consultas frecuentes, capturan datos de contacto y derivan al cliente a tu WhatsApp en el momento justo, desde un asistente simple hasta uno con inteligencia artificial entrenado con la información de tu negocio.',
   incluye:['Diseño del flujo de conversación según tu rubro','Personalización con tu marca, colores y tono de comunicación','Instalación en tu página web','Derivación de clientes interesados a WhatsApp','Pruebas, capacitación y soporte de arranque'],
   resultados:['Atención inmediata, incluso fuera de horario','Menos consultas repetitivas para tu equipo','Más contactos calificados capturados'],
-  precio:'Desde S/. 240 + mantenimiento'},
+  precio:'Desde S/. 140 + mantenimiento'},
  carrito:{num:'09',titulo:'Carrito de compras',
   hook:'"Convierte tu catálogo en un proceso de compra claro y ordenado."',
   desc:'Si ya tienes una página web y solo necesitas que tus clientes puedan seleccionar productos y armar su pedido, integramos un carrito de compras a tu sitio sin rehacerlo desde cero. Desde un carrito simple hasta uno conectado a catálogo, panel de administración y pasarela de pagos, según lo que tu negocio necesita hoy.',
@@ -1141,12 +1412,85 @@ const ioReveal=new IntersectionObserver(es=>es.forEach(e=>{
 document.querySelectorAll('.reveal').forEach(el=>ioReveal.observe(el));
 document.getElementById('formWa').addEventListener('submit',e=>{
  e.preventDefault();
+ if(!document.getElementById('acepta').checked){return;}
  const n=document.getElementById('nombre').value.trim()||'—';
  const s=document.getElementById('servicio').value;
  const mo=document.getElementById('modalidad').value;
  const m=document.getElementById('mensaje').value.trim();
  window.open('https://wa.me/51996989580?text='+
-  encodeURIComponent('Hola Mandelbrot, soy '+n+'. Me interesa: '+s+'. Modalidad de atención: '+mo+'. '+m),'_blank');});
+  encodeURIComponent('Hola MANDELBROT DIGITAL MARKETING AGENCY, soy '+n+'. Me interesa: '+s+'. Modalidad de atención: '+mo+'. '+m),'_blank');});
+
+/* ===== Autor: fotos, progreso, scrollspy ===== */
+(function(){
+  const EXT=['.jpg','.jpeg','.png','.webp','.JPG','.JPEG','.PNG','.WEBP',''];
+  document.querySelectorAll('img[data-autor]').forEach(img=>{
+    const base='assets/autor/'+img.dataset.autor,fig=img.closest('.foto');let i=0;
+    const next=()=>{if(i>=EXT.length){fig.classList.add('sin-img');img.remove();return}img.src=base+EXT[i++]};
+    img.onload=()=>fig.classList.add('ok');img.onerror=next;next();
+  });
+  const bar=document.getElementById('progreso'),up=document.getElementById('subir');
+  const onS=()=>{const h=document.documentElement,m=h.scrollHeight-h.clientHeight;
+    bar.style.width=(m>0?h.scrollTop/m*100:0)+'%';up.classList.toggle('show',h.scrollTop>700)};
+  addEventListener('scroll',onS,{passive:true});onS();
+  up.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+  const links=[...document.querySelectorAll('.nav-links a')];
+  const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('main section[id]').forEach(x=>so.observe(x));
+})();
+
+/* ===== Legal ===== */
+(function(){
+  const m=document.getElementById('modalLegal'),b=document.getElementById('lgBody');
+  const abrir=k=>{const t=document.getElementById('tpl-'+k);if(!t)return;b.innerHTML='';b.appendChild(t.content.cloneNode(true));m.classList.add('abierto');
+    const f=document.getElementById('formReclamo');
+    if(f)f.addEventListener('submit',e=>{e.preventDefault();
+      const v=id=>document.getElementById(id).value.trim();
+      const txt='LIBRO DE RECLAMACIONES 2026 - NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L. (RUC 20615595617)\nNombre: '+v('rcNombre')+'\nDocumento: '+v('rcDoc')+'\nContacto: '+v('rcContacto')+'\nTipo: '+document.getElementById('rcTipo').value+'\nDetalle: '+v('rcDetalle');
+      window.open('https://wa.me/51996989580?text='+encodeURIComponent(txt),'_blank');});};
+  document.addEventListener('click',e=>{const a=e.target.closest('[data-legal]');if(a){e.preventDefault();abrir(a.dataset.legal);}});
+  document.getElementById('cerrarLegal').addEventListener('click',()=>m.classList.remove('abierto'));
+  m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('abierto')});
+  addEventListener('keydown',e=>{if(e.key==='Escape')m.classList.remove('abierto')});
+})();
+
+/* ===== VARIACIONES DEL LOGO (Quiénes somos) ===== */
+(function(){
+ const EXT=['.png','.webp','.jpg','.jpeg','.svg','.PNG','.JPG','.WEBP'];
+ function cargar(img,base,cb){let i=0;(function p(){
+   if(i>=EXT.length){img.src=(typeof SVG_FALLBACK!=='undefined')?SVG_FALLBACK:'assets/logo.png';cb&&cb(null);return;}
+   const t=new Image();t.onload=()=>{img.src=base+EXT[i];cb&&cb(base+EXT[i]);};t.onerror=()=>{i++;p();};t.src=base+EXT[i];})();}
+ document.querySelectorAll('img[data-var]').forEach(im=>cargar(im,im.dataset.var));
+ const main=document.getElementById('lvMain'),cap=document.getElementById('lvCap');
+ document.querySelectorAll('.lv-tile').forEach(b=>b.addEventListener('click',()=>{
+   document.querySelectorAll('.lv-tile').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+   main.style.opacity=.2;cap.textContent=b.dataset.cap;
+   const wrap=main.closest('.lv-main');
+   wrap.style.background=b.querySelector('.lv-bg').classList.contains('light')?'#f5f3ff':'';
+   cargar(main,b.dataset.base,()=>{main.style.opacity=1;});
+ }));
+})();
+
+/* ===== PERSONAJE EN PANTALLA VERDE (Atención) ===== */
+(function(){
+ const BASE='assets/personaje/personaje';           /* tu archivo: personaje.mp4 (o .webm / .mov / .png) */
+ const CAND=[BASE+'.mp4',BASE+'.webm',BASE+'.mov',BASE+'.m4v',BASE+'.png',BASE+'.webp',BASE+'.gif'];
+ const globe=document.querySelector('.at-globe'),box=document.getElementById('atChar');
+ if(!globe||!box)return;
+ const esVideo=u=>/\.(mp4|webm|mov|m4v)$/i.test(u);
+ function listo(el){box.appendChild(el);globe.classList.add('has-char');
+   if(el.tagName==='VIDEO'){el.play().catch(()=>{});
+     if('IntersectionObserver' in window){new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?el.play().catch(()=>{}):el.pause()),{threshold:.1}).observe(globe);}}}
+ let i=0;(function probar(){
+   if(i>=CAND.length)return;                         /* sin archivo: se queda el globo ONLINE */
+   const u=CAND[i++];
+   if(esVideo(u)){
+     const v=document.createElement('video');v.muted=true;v.loop=true;v.autoplay=true;v.playsInline=true;v.setAttribute('muted','');v.preload='auto';
+     v.onloadeddata=()=>listo(v);v.onerror=probar;v.src=u;
+   }else{
+     const im=new Image();im.alt='';im.onload=()=>listo(im);im.onerror=probar;im.src=u;
+   }
+ })();
+})();
 </script>
 </body>
 </html>
