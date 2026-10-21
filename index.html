@@ -427,6 +427,29 @@ footer .pay-mini{color:var(--yape);font-weight:600}
 .autor-pilares b{display:block;font-size:.92rem}.autor-pilares span{color:var(--muted);font-size:.82rem}
 .autor-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
 .autor-chips span{padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:rgba(168,85,247,.1);font-size:.74rem;font-weight:600}
+.autor-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:54px}
+.autor-stat{padding:18px 16px;border:1px solid var(--border);border-radius:16px;background:var(--card);text-align:center;transition:.3s}
+.autor-stat:hover{border-color:rgba(168,85,247,.55);box-shadow:var(--glow);transform:translateY(-3px)}
+.autor-stat b{display:block;font-size:clamp(1.5rem,3vw,2rem);font-weight:800;background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.autor-stat span{display:block;margin-top:4px;color:var(--muted);font-size:.8rem}
+.autor-extra{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:24px}
+.autor-box{padding:24px;border:1px solid var(--border);border-radius:20px;background:var(--card)}
+.autor-box h4{font-size:1.05rem;font-weight:800;margin-bottom:14px}
+.autor-box h4 small{display:block;color:var(--green);font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.trayecto{list-style:none;display:grid;gap:14px;border-left:2px solid rgba(168,85,247,.35);margin-left:6px;padding-left:18px}
+.trayecto li{position:relative}
+.trayecto li::before{content:"";position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--violet);box-shadow:0 0 10px var(--violet)}
+.trayecto time{color:var(--cyan);font-size:.72rem;font-weight:700;letter-spacing:.05em}
+.trayecto b{display:block;font-size:.9rem}
+.trayecto span{display:block;color:var(--muted);font-size:.8rem}
+.forma-list{list-style:none;display:grid;gap:12px}
+.forma-list li{color:var(--muted);font-size:.82rem}
+.forma-list b{display:block;color:var(--text);font-size:.88rem}
+.autor-skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.autor-skills span{padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:rgba(34,211,238,.08);font-size:.72rem;font-weight:600}
+.autor-cierre{margin-top:24px;padding:22px 26px;border:1px solid rgba(168,85,247,.45);border-radius:20px;background:linear-gradient(135deg,rgba(168,85,247,.14),rgba(34,211,238,.08));box-shadow:var(--glow)}
+.autor-cierre b{display:block;font-size:1.05rem;margin-bottom:6px}
+.autor-cierre p{color:var(--muted);font-size:.9rem}
 .faq-list{display:grid;gap:12px;margin-top:30px;max-width:860px}
 .faq-item{border:1px solid var(--border);border-radius:16px;background:var(--card);overflow:hidden;transition:.3s}
 .faq-item[open]{border-color:rgba(168,85,247,.55);box-shadow:var(--glow)}
@@ -443,7 +466,7 @@ footer .pay-mini{color:var(--yape);font-weight:600}
 .fab-top{bottom:84px;width:44px;height:44px;background:rgba(20,11,34,.92);border:1px solid var(--border);opacity:0;pointer-events:none;transition:.3s}
 .fab-top.show{opacity:1;pointer-events:auto}
 .foot-links a{color:var(--cyan);text-decoration:none;font-weight:600}
-@media(max-width:860px){.autor-grid{grid-template-columns:1fr;gap:30px}.foto-b{right:0}}
+@media(max-width:860px){.autor-grid{grid-template-columns:1fr;gap:30px}.foto-b{right:0}.autor-stats{grid-template-columns:repeat(2,1fr)}.autor-extra{grid-template-columns:1fr}}
 
 /* ===== Marca / legal 2026 ===== */
 .brand-txt{display:grid;line-height:1.05}
@@ -503,7 +526,7 @@ footer .pay-mini{color:var(--yape);font-weight:600}
 <meta property="og:locale" content="es_PE">
 <meta property="og:title" content="Mandelbrot Digital Marketing Agency">
 <meta property="og:description" content="Estrategia, publicidad, contenido y performance digital para marcas que quieren verse mejor y vender más. Cusco, Perú · atención virtual.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"MANDELBROT DIGITAL MARKETING AGENCY","legalName":"NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L.","taxID":"20615595617","description":"Agencia de marketing digital: branding, contenido, web, SEO y chatbots.","telephone":"+51996989580","areaServed":"PE","address":{"@type":"PostalAddress","streetAddress":"Urb. Los Licenciados, Pasaje LOA H-7, San Sebastián","addressLocality":"Cusco","addressRegion":"Cusco","addressCountry":"PE"},"founder":{"@type":"Person","name":"Joseph Edu Torreblanca Paz","jobTitle":"Fundador y Gerente General"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"MANDELBROT DIGITAL MARKETING AGENCY","legalName":"NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L.","taxID":"20615595617","description":"Agencia de marketing digital: branding, contenido, web, SEO y chatbots.","telephone":"+51996989580","areaServed":"PE","address":{"@type":"PostalAddress","streetAddress":"Urb. Los Licenciados, Pasaje LOA H-7, San Sebastián","addressLocality":"Cusco","addressRegion":"Cusco","addressCountry":"PE"},"founder":{"@type":"Person","name":"Joseph Edu Torreblanca Paz","jobTitle":"Fundador y Gerente General","alumniOf":{"@type":"CollegeOrUniversity","name":"Universidad Andina del Cusco"},"knowsAbout":["Marketing digital","Branding","Desarrollo web","SEO","Gestión de proyectos","Administración de empresas","Logística","Gestión presupuestal"]}}</script>
 </head>
 <body>
 
@@ -724,7 +747,7 @@ footer .pay-mini{color:var(--yape);font-weight:600}
     <div class="sec-head reveal">
       <span class="kicker-sec">El autor</span>
       <h2>Detrás de Mandelbrot</h2>
-      <p>Estrategia, diseño y tecnología con visión de negocio, desde Cusco para marcas que quieren crecer.</p>
+      <p>Administración de empresas, estrategia, diseño y tecnología con visión de negocio, desde Cusco para marcas que quieren crecer.</p>
     </div>
     <div class="autor-grid">
       <div class="autor-fotos reveal">
@@ -733,22 +756,64 @@ footer .pay-mini{color:var(--yape);font-weight:600}
         <div class="autor-sello"><b>Cusco · Perú</b><span>Atención virtual · Meet o Zoom</span></div>
       </div>
       <div class="autor-info reveal">
-        <span class="badge">Fundador · Estratega de marketing digital</span>
+        <span class="badge">Fundador · Administrador de empresas · Estratega de marketing</span>
         <h3>Joseph Edu Torreblanca Paz</h3>
         <p class="rol">Gerente General de NUEVO AMANECER SOLUCIONES INTEGRALES E.I.R.L. · Fundador de MANDELBROT DIGITAL MARKETING AGENCY</p>
-        <p>Emprendedor y estratega de marketing digital radicado en Cusco, Perú. Impulsa de forma simultánea distintos emprendimientos en Cusco y en la macrorregión sur del país, lo que le da una mirada práctica de lo que una marca necesita para vender, no solo para verse bien.</p>
-        <p>Su trabajo académico en administración de negocios se combina con el diseño, el contenido audiovisual y el desarrollo web para ofrecer soluciones completas: identidad de marca, campañas, sitios web, posicionamiento SEO y chatbots bajo una misma dirección creativa.</p>
+        <p>Bachiller en Administración de Empresas por la Universidad Andina del Cusco y estratega de marketing digital radicado en Cusco, Perú. Con más de 8 años de trayectoria en gestión de proyectos, logística, presupuesto y documentación, impulsa de forma simultánea distintos emprendimientos en Cusco y en la macrorregión sur del país. Esa mirada práctica le permite entender lo que una marca necesita para vender, no solo para verse bien.</p>
+        <p>Su formación administrativa se combina con el diseño, el contenido audiovisual y el desarrollo web (diseñó su primera web, logo y posicionamiento para una asociación productiva en 2019–2020) para ofrecer soluciones completas: identidad de marca, campañas, sitios web, posicionamiento SEO y chatbots bajo una misma dirección creativa, con planificación, plazos y resultados medibles.</p>
         <ul class="autor-pilares">
-          <li><i>1</i><div><b>Estrategia con visión de negocio</b><span>Cada pieza creativa responde a un objetivo comercial claro.</span></div></li>
-          <li><i>2</i><div><b>Identidad y creatividad</b><span>Marcas con presencia memorable, coherente y profesional en todos sus puntos de contacto.</span></div></li>
-          <li><i>3</i><div><b>Cercanía y transparencia</b><span>Trato directo por WhatsApp, precios publicados y reuniones por Google Meet o Zoom.</span></div></li>
+          <li><i>1</i><div><b>Estrategia con visión de negocio</b><span>Cada pieza creativa responde a un objetivo comercial claro, con presupuesto, cronograma e hitos definidos.</span></div></li>
+          <li><i>2</i><div><b>Orden y rigor administrativo</b><span>Procesos, control interno y documentación al día: contratos, cotizaciones, informes y seguimiento de cada entregable.</span></div></li>
+          <li><i>3</i><div><b>Identidad y creatividad</b><span>Marcas con presencia memorable, coherente y profesional en todos sus puntos de contacto.</span></div></li>
+          <li><i>4</i><div><b>Cercanía y transparencia</b><span>Trato directo por WhatsApp, precios publicados y reuniones por Google Meet o Zoom.</span></div></li>
         </ul>
-        <div class="autor-chips"><span>Marketing verde</span><span>Branding</span><span>Contenido audiovisual</span><span>Desarrollo web</span><span>SEO</span><span>Chatbots</span></div>
+        <div class="autor-chips"><span>Marketing verde</span><span>Branding</span><span>Contenido audiovisual</span><span>Desarrollo web</span><span>SEO</span><span>Chatbots</span><span>Gestión de proyectos</span><span>Presupuesto</span><span>Logística</span></div>
         <div class="hero-cta">
           <a class="btn btn-primary" href="https://wa.me/51996989580?text=Hola%20Joseph%2C%20vi%20la%20web%20de%20Mandelbrot%20y%20quiero%20conversar%20sobre%20mi%20proyecto." target="_blank" rel="noopener">Hablar con Joseph</a>
           <a class="btn btn-ghost" href="#portafolio">Ver portafolio y precios</a>
         </div>
       </div>
+    </div>
+
+    <div class="autor-stats reveal">
+      <div class="autor-stat"><b>8+</b><span>años en gestión administrativa, logística y proyectos</span></div>
+      <div class="autor-stat"><b>S/ 1.5 M</b><span>devengados en un solo proyecto municipal (2023)</span></div>
+      <div class="autor-stat"><b>600+ h</b><span>de alta especialización en gestión pública, presupuesto y logística</span></div>
+      <div class="autor-stat"><b>15</b><span>comunidades atendidas en un proyecto productivo</span></div>
+    </div>
+
+    <div class="autor-extra">
+      <div class="autor-box reveal">
+        <h4><small>Trayectoria</small>Experiencia que respalda cada estrategia</h4>
+        <ul class="trayecto">
+          <li><time>2025</time><b>Gobierno Regional del Cusco · Estudios de pre-inversión</b><span>Encuestas de campo en el sector San Sebastián para el proyecto de agua potable y alcantarillado de 7 distritos; recojo de datos físicos y con Google Forms.</span></li>
+          <li><time>2025</time><b>EsSalud · Red Asistencial Cusco</b><span>Levantamiento de inventario patrimonial en el hospital de Urubamba, con coordinación entre áreas y validación de fichas.</span></li>
+          <li><time>2024</time><b>Administrador de proyectos · PANKARATA S.A.C.</b><span>Seguimiento de 7 proyectos de infraestructura y riego: contratos, órdenes de compra, cotizaciones, planillas y coordinación con residentes y proveedores.</span></li>
+          <li><time>2023</time><b>Asistente administrativo · Municipalidad de Quispicanchi</b><span>Proyecto de cadena productiva de cuyes en 15 comunidades: S/ 1.5 M devengados, reportes semanales de inversión al MEF y apoyo en ferias, talleres y capacitaciones.</span></li>
+          <li><time>2022</time><b>Sociedad de Beneficencia del Cusco</b><span>Inventario y digitalización documental, informes de conformidad y programación trimestral de actividades.</span></li>
+          <li><time>2021</time><b>Jefe de logística · Vivienda rural (Ministerio de Vivienda)</b><span>Control de almacén y entrega de materiales a 81 beneficiarios, con reportes diarios y mensuales.</span></li>
+          <li><time>2019 – 2020</time><b>Asistente administrativo · Asociación Chillimayo Camanti (PNIPA)</b><span>Gestión de trámites del proyecto, plan de adquisiciones y primera experiencia digital: web con logo, portada, SEO y administración de contenido, más identicards en CorelDRAW.</span></li>
+          <li><time>2018</time><b>Asistente contable · Hoteles Royal Inka</b><span>Caja, conciliaciones, facturación electrónica y reportes de ventas de tres hoteles; contacto con plataformas como Booking, Expedia, Airbnb y Trivago.</span></li>
+        </ul>
+      </div>
+      <div class="autor-box reveal">
+        <h4><small>Formación</small>Estudios y certificaciones</h4>
+        <ul class="forma-list">
+          <li><b>Bachiller en Administración de Empresas</b>Universidad Andina del Cusco · 2022</li>
+          <li><b>Comprador Público Certificado · OECE (nivel básico)</b>Vigente hasta abril de 2027</li>
+          <li><b>Alta Especialización · OEGPP (60 h cada curso)</b>Contrataciones con el Estado y su nuevo reglamento, Gestión de logística, almacenes e inventarios, Gestión presupuestal y gasto público, Gestión pública y Gestión documental (2025–2026). Invierte.pe, SIAF, SIGA, Control interno gubernamental y Gestión municipal (2023).</li>
+          <li><b>Networking y Marketing Personal</b>Fundación Telefónica · 40 h · 2020</li>
+          <li><b>Capacitación para el autoempleo</b>Jóvenes Productivos, MTPE · 104 h · 2019</li>
+          <li><b>Emprendimiento y negocios</b>Creando mi Negocio (60 h, 2016), Semana Empresarial 2015 y Congreso CONEA 2012 en gestión del talento humano</li>
+          <li><b>Cierre contable y tributario</b>Escuela de Negocios Visión Contable · 24 h · 2018</li>
+        </ul>
+        <div class="autor-skills"><span>Planificación y control de proyectos</span><span>Gestión por resultados</span><span>Gestión de riesgos</span><span>Control interno</span><span>Toma de decisiones</span><span>Coordinación interinstitucional</span><span>Gestión de la información</span><span>Mejora continua</span></div>
+      </div>
+    </div>
+
+    <div class="autor-cierre reveal">
+      <b>Marketing con números y con orden</b>
+      <p>Muchas agencias saben diseñar; pocas saben presupuestar, documentar y cumplir plazos. Por eso en Mandelbrot cada campaña, web o identidad parte de un objetivo comercial, un presupuesto claro y un cronograma que se cumple.</p>
     </div>
   </div>
 </section>
